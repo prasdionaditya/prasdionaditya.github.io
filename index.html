@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dion — Web Developer & Graphic Designer</title>
+    <meta name="description" content="Portfolio of Muhammad Aksal Prasdion Aditya (Dion) — a Gen Z creative who builds digital experiences that slap. Web development meets graphic design.">
+    <meta name="keywords" content="Dion, Prasdion Aditya, Web Developer, Graphic Designer, Portfolio, Creative Developer, Frontend Developer">
+    <meta name="author" content="Muhammad Aksal Prasdion Aditya">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Dion — Web Developer & Graphic Designer">
+    <meta property="og:description" content="i turn caffeine into code & ideas into pixels. check out my work.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ============ PRELOADER ============ -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <span class="preloader-dot">•</span>
+            <span class="preloader-text">hey there</span>
+        </div>
+    </div>
+
+    <!-- ============ CUSTOM CURSOR ============ -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">dion<span class="text-blue">.</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about" class="nav-link">about</a>
+            <a href="#skills" class="nav-link">skills</a>
+            <a href="#work" class="nav-link">work</a>
+            <a href="#contact" class="nav-link btn-nav-contact">let's talk</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ============ MOBILE MENU ============ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#about" class="mobile-link">about</a>
+            <a href="#skills" class="mobile-link">skills</a>
+            <a href="#work" class="mobile-link">work</a>
+            <a href="#contact" class="mobile-link">contact</a>
+            <div class="mobile-socials">
+                <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+                <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener" aria-label="LinkedIn">li</a>
+                <a href="https://youtube.com/@prasdionaditya" target="_blank" rel="noopener" aria-label="YouTube">yt</a>
+                <a href="https://twitter.com/prasdionaditya" target="_blank" rel="noopener" aria-label="Twitter">tw</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <section id="hero">
+        <!-- Floating decorative shapes -->
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-status reveal-up" style="--delay: 0.1s">
+                <span class="status-dot"></span>
+                <span>available for work</span>
+            </div>
+            <p class="hero-greeting reveal-up" style="--delay: 0.2s">hey, welcome to my corner of the internet 👋</p>
+            <h1 class="hero-name reveal-up" style="--delay: 0.35s">
+                I'm <span class="text-blue">Dion</span><span class="text-blue">.</span>
+            </h1>
+            <p class="hero-role reveal-up" style="--delay: 0.5s">
+                web developer <span class="role-divider">×</span> graphic designer
+            </p>
+            <p class="hero-desc reveal-up" style="--delay: 0.65s">
+                i turn caffeine into code & ideas into pixels.<br>
+                currently crafting digital experiences that just <em>hit different</em>. ✨
+            </p>
+            <div class="hero-ctas reveal-up" style="--delay: 0.8s">
+                <a href="#work" class="btn btn-primary" id="heroCtaPrimary">
+                    <span>see my work</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="#contact" class="btn btn-outline" id="heroCtaSecondary">let's talk</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator reveal-up" style="--delay: 1.2s">
+            <span>scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span>WEB DEVELOPER</span><span class="marquee-dot">✦</span>
+                <span>GRAPHIC DESIGNER</span><span class="marquee-dot">✦</span>
+                <span>PIXEL PERFECTIONIST</span><span class="marquee-dot">✦</span>
+                <span>CREATIVE THINKER</span><span class="marquee-dot">✦</span>
+                <span>CODE ENTHUSIAST</span><span class="marquee-dot">✦</span>
+                <span>DIGITAL CRAFTSMAN</span><span class="marquee-dot">✦</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span>WEB DEVELOPER</span><span class="marquee-dot">✦</span>
+                <span>GRAPHIC DESIGNER</span><span class="marquee-dot">✦</span>
+                <span>PIXEL PERFECTIONIST</span><span class="marquee-dot">✦</span>
+                <span>CREATIVE THINKER</span><span class="marquee-dot">✦</span>
+                <span>CODE ENTHUSIAST</span><span class="marquee-dot">✦</span>
+                <span>DIGITAL CRAFTSMAN</span><span class="marquee-dot">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-number">01</span>
+                <h2 class="section-title">who's this guy? <span class="handwritten">— glad you asked</span></h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text scroll-reveal">
+                    <p class="about-lead">
+                        i'm <strong>Dion</strong> — a creative soul who lives at the intersection of <span class="text-blue">code</span> and <span class="text-blue">design</span>.
+                    </p>
+                    <p>
+                        full name's Muhammad Aksal Prasdion Aditya, but let's keep it simple. i don't just build websites; i craft digital experiences that <em>slap</em>. whether it's making a design system feel alive or engineering a seamless user flow, i'm obsessed with the details that most people scroll past.
+                    </p>
+                    <p>
+                        when i'm not pushing pixels or debugging at 3AM, you'll find me exploring new design trends, experimenting with creative tools, or wondering why CSS is like that. 🤷
+                    </p>
+                </div>
+
+                <div class="about-vibes scroll-reveal">
+                    <div class="vibe-card">
+                        <span class="vibe-emoji">🎨</span>
+                        <span class="vibe-label">pixel perfectionist</span>
+                    </div>
+                    <div class="vibe-card">
+                        <span class="vibe-emoji">☕</span>
+                        <span class="vibe-label">fueled by coffee</span>
+                    </div>
+                    <div class="vibe-card">
+                        <span class="vibe-emoji">🌙</span>
+                        <span class="vibe-label">peak at 2AM</span>
+                    </div>
+                    <div class="vibe-card">
+                        <span class="vibe-emoji">🚀</span>
+                        <span class="vibe-label">always shipping</span>
+                    </div>
+                    <div class="vibe-card">
+                        <span class="vibe-emoji">🎮</span>
+                        <span class="vibe-label">gamer at heart</span>
+                    </div>
+                    <div class="vibe-card">
+                        <span class="vibe-emoji">💡</span>
+                        <span class="vibe-label">idea machine</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-number">02</span>
+                <h2 class="section-title">my toolkit <span class="handwritten">— the good stuff</span></h2>
+            </div>
+
+            <div class="skills-categories">
+                <!-- Development -->
+                <div class="skill-category scroll-reveal">
+                    <h3 class="skill-category-title">
+                        <span class="skill-icon">⚡</span> development
+                    </h3>
+                    <div class="skill-pills">
+                        <span class="skill-pill">HTML / CSS</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">TypeScript</span>
+                        <span class="skill-pill">React</span>
+                        <span class="skill-pill">Next.js</span>
+                        <span class="skill-pill">Node.js</span>
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">Git</span>
+                        <span class="skill-pill">REST APIs</span>
+                        <span class="skill-pill">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <!-- Design -->
+                <div class="skill-category scroll-reveal">
+                    <h3 class="skill-category-title">
+                        <span class="skill-icon">🎨</span> design
+                    </h3>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Figma</span>
+                        <span class="skill-pill">Adobe Photoshop</span>
+                        <span class="skill-pill">Adobe Illustrator</span>
+                        <span class="skill-pill">UI/UX Design</span>
+                        <span class="skill-pill">Responsive Design</span>
+                        <span class="skill-pill">Brand Identity</span>
+                    </div>
+                </div>
+
+                <!-- Other -->
+                <div class="skill-category scroll-reveal">
+                    <h3 class="skill-category-title">
+                        <span class="skill-icon">🧠</span> other cool things
+                    </h3>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Problem Solving</span>
+                        <span class="skill-pill">SEO</span>
+                        <span class="skill-pill">Performance Optimization</span>
+                        <span class="skill-pill">Agile / Scrum</span>
+                        <span class="skill-pill">Technical Writing</span>
+                        <span class="skill-pill">Video Editing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WORK / PROJECTS ============ -->
+    <section id="work">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-number">03</span>
+                <h2 class="section-title">stuff i've built <span class="handwritten">— pretty proud of these</span></h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: Media Converter -->
+                <article class="project-card scroll-reveal" id="project1">
+                    <div class="project-image">
+                        <div class="project-image-bg project-bg-1">
+                            <div class="project-icon-grid">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            </div>
+                        </div>
+                        <span class="project-badge">Featured</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3 class="project-name">ConvertIt</h3>
+                            <p class="project-type">Media Converter</p>
+                        </div>
+                        <p class="project-desc">
+                            a slick media converter that handles your files without the drama. upload, convert, download — no cap, no bloatware, just works. ⚡
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">FFmpeg</span>
+                            <span class="project-tag">WebAssembly</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" aria-label="View live project">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <span>live</span>
+                            </a>
+                            <a href="#" class="project-link" aria-label="View source code">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <span>code</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2: AI Learning App -->
+                <article class="project-card scroll-reveal" id="project2">
+                    <div class="project-image">
+                        <div class="project-image-bg project-bg-2">
+                            <div class="project-icon-grid">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                        </div>
+                        <span class="project-badge">Featured</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3 class="project-name">BrainWave</h3>
+                            <p class="project-type">AI Learning Platform</p>
+                        </div>
+                        <p class="project-desc">
+                            an AI-powered learning platform that adapts to how you actually think. personalized paths, smart quizzes, zero boredom — because studying shouldn't feel like a chore. 🧠
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">OpenAI</span>
+                            <span class="project-tag">TailwindCSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" aria-label="View live project">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <span>live</span>
+                            </a>
+                            <a href="#" class="project-link" aria-label="View source code">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <span>code</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="more-projects scroll-reveal">
+                <p class="handwritten">more cool stuff coming soon...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content scroll-reveal">
+                <p class="contact-label">04 — what's next?</p>
+                <h2 class="contact-heading">
+                    let's create something<br>
+                    <span class="text-blue">ridiculously cool</span> together.
+                </h2>
+                <p class="contact-desc">
+                    got a wild idea? a project that needs some creative juice? or just wanna say hey?<br>
+                    my inbox is always open — don't be shy. worst i can say is "let's do it." 🤝
+                </p>
+
+                <a href="mailto:dionaditya59@gmail.com" class="btn btn-primary btn-large" id="contactEmailBtn">
+                    <span>say hello</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+
+                <div class="social-links">
+                    <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener" class="social-link" aria-label="Instagram" id="socialInstagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        <span>instagram</span>
+                    </a>
+                    <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn" id="socialLinkedin">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        <span>linkedin</span>
+                    </a>
+                    <a href="https://youtube.com/@prasdionaditya" target="_blank" rel="noopener" class="social-link" aria-label="YouTube" id="socialYoutube">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                        <span>youtube</span>
+                    </a>
+                    <a href="https://twitter.com/prasdionaditya" target="_blank" rel="noopener" class="social-link" aria-label="Twitter / X" id="socialTwitter">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+                        <span>twitter / x</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-credit">
+                    designed & built by <span class="text-blue">dion</span> with lots of ☕ and questionable sleep schedules
+                </p>
+                <p class="footer-copy">© 2026 — made with 💙</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ BACK TO TOP ============ -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
