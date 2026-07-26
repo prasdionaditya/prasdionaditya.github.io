@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dion — Web Developer & Graphic Designer</title>
-    <meta name="description" content="Portfolio of Muhammad Aksal Prasdion Aditya (Dion) — a Gen Z creative who builds digital experiences that slap. Web development meets graphic design.">
-    <meta name="keywords" content="Dion, Prasdion Aditya, Web Developer, Graphic Designer, Portfolio, Creative Developer, Frontend Developer">
+    <title>Dion | Web Developer &amp; Graphic Designer</title>
+    <meta name="description"
+        content="Portfolio of Muhammad Aksal Prasdion Aditya (Dion) | Web Developer &amp; Graphic Designer crafting bold digital experiences.">
+    <meta name="keywords"
+        content="Dion, Prasdion Aditya, Web Developer, Graphic Designer, Portfolio, Creative Developer, Frontend Developer, UI/UX Designer">
     <meta name="author" content="Muhammad Aksal Prasdion Aditya">
     <meta name="robots" content="index, follow">
 
-    <meta property="og:title" content="Dion — Web Developer & Graphic Designer">
-    <meta property="og:description" content="i turn caffeine into code & ideas into pixels. check out my work.">
+    <meta property="og:title" content="Dion | Web Dev &amp; Graphic Designer">
+    <meta property="og:description" content="where code meets design. check out my work.">
+    <meta property="og:image" content="img/dion.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="img/dion.png">
+
+    <!-- Favicon (headshot) -->
+    <link rel="icon" type="image/png" href="img/dion.png">
+    <link rel="apple-touch-icon" href="img/dion.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <!-- ============ PRELOADER ============ -->
     <div id="preloader">
         <div class="preloader-content">
-            <span class="preloader-dot">•</span>
-            <span class="preloader-text">hey there</span>
+            <h1 class="preloader-text" aria-label="HelloOooOoO!">
+                <span style="--i:1">H</span><span style="--i:2">e</span><span style="--i:3">l</span><span
+                    style="--i:4">l</span><span style="--i:5">o</span><span style="--i:6"
+                    class="lime-text">O</span><span style="--i:7">o</span><span style="--i:8">o</span><span
+                    style="--i:9" class="lime-text">O</span><span style="--i:10">o</span><span style="--i:11"
+                    class="lime-text">O</span><span style="--i:12">!</span>
+            </h1>
         </div>
     </div>
 
-    <!-- ============ CUSTOM CURSOR ============ -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
+    <!-- ============ CUSTOM HAND CURSOR ============ -->
+    <div class="cursor-hand" id="cursorHand">
+        <img src="img/hand-cursor.png" alt="Hand Cursor">
+    </div>
 
     <!-- ============ NAVBAR ============ -->
     <nav id="navbar">
-        <a href="#" class="nav-logo">dion<span class="text-blue">.</span></a>
+        <a href="#" class="nav-logo">dion<span class="logo-dot">.</span></a>
         <div class="nav-links" id="navLinks">
             <a href="#about" class="nav-link">about</a>
             <a href="#skills" class="nav-link">skills</a>
             <a href="#work" class="nav-link">work</a>
-            <a href="#contact" class="nav-link btn-nav-contact">let's talk</a>
+            <a href="#contact" class="nav-link nav-cta">let's talk</a>
         </div>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
             <span></span>
@@ -56,51 +74,72 @@
             <a href="#work" class="mobile-link">work</a>
             <a href="#contact" class="mobile-link">contact</a>
             <div class="mobile-socials">
-                <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
-                <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener" aria-label="LinkedIn">li</a>
+                <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener"
+                    aria-label="Instagram">ig</a>
+                <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener"
+                    aria-label="LinkedIn">li</a>
                 <a href="https://youtube.com/@prasdionaditya" target="_blank" rel="noopener" aria-label="YouTube">yt</a>
-                <a href="https://twitter.com/prasdionaditya" target="_blank" rel="noopener" aria-label="Twitter">tw</a>
+                <a href="https://x.com/prasdionaditya" target="_blank" rel="noopener" aria-label="Twitter">tw</a>
             </div>
         </div>
     </div>
 
     <!-- ============ HERO ============ -->
     <section id="hero">
-        <!-- Floating decorative shapes -->
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-            <div class="shape shape-5"></div>
+        <div class="hero-grid"></div>
+
+        <div class="hero-inner">
+            <!-- Left: Big bold text -->
+            <div class="hero-text-block">
+                <p class="hero-tag reveal-up" style="--delay:0.1s">hey, i'm dion 👋</p>
+                <h1 class="hero-headline reveal-up" style="--delay:0.2s">
+                    <span class="line-1">WEB DEV</span>
+                    <span class="line-2 lime-text">&amp; GRAPHIC</span>
+                    <span class="line-3">DESIGNER</span>
+                </h1>
+                <p class="hero-sub reveal-up" style="--delay:0.4s">
+                    i turn caffeine into code &amp; raw ideas into pixels that <em>slap</em>.
+                    building fast, responsive web experiences &amp; sharp brand designs.
+                </p>
+                <div class="hero-btns reveal-up" style="--delay:0.55s">
+                    <a href="#work" class="btn-lime snd-click" id="heroCtaPrimary">see my work ↗</a>
+                    <a href="cv.pdf" class="btn-ghost snd-click" id="heroCvBtn" download>see cv 📄</a>
+                    <a href="#contact" class="btn-ghost snd-click" id="heroCtaSecondary">get in touch</a>
+                </div>
+            </div>
+
+            <!-- Right: Circular open-to-work badge -->
+            <div class="hero-badge-area reveal-up" style="--delay:0.35s">
+                <div class="otw-wrapper">
+                    <div class="otw-ring" id="otwRing">
+                        <svg viewBox="0 0 200 200" class="otw-svg">
+                            <defs>
+                                <path id="circlePath" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+                            </defs>
+                            <text class="otw-text">
+                                <textPath href="#circlePath" startOffset="0%">
+                                    ✦ OPEN TO WORK ✦ OPEN TO WORK ✦ OPEN TO WORK ✦ OPEN TO WORK
+                                </textPath>
+                            </text>
+                        </svg>
+                        <div class="otw-face">
+                            <img src="img/dion.png" alt="Dion | Open to Work" class="otw-photo">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-chip chip-1 reveal-up" style="--delay:0.6s">
+                    <span class="chip-num">3+</span>
+                    <span class="chip-label">yrs xp</span>
+                </div>
+                <div class="hero-chip chip-2 reveal-up" style="--delay:0.7s">
+                    <span class="chip-num">20+</span>
+                    <span class="chip-label">projects</span>
+                </div>
+            </div>
         </div>
 
-        <div class="hero-content">
-            <div class="hero-status reveal-up" style="--delay: 0.1s">
-                <span class="status-dot"></span>
-                <span>available for work</span>
-            </div>
-            <p class="hero-greeting reveal-up" style="--delay: 0.2s">hey, welcome to my corner of the internet 👋</p>
-            <h1 class="hero-name reveal-up" style="--delay: 0.35s">
-                I'm <span class="text-blue">Dion</span><span class="text-blue">.</span>
-            </h1>
-            <p class="hero-role reveal-up" style="--delay: 0.5s">
-                web developer <span class="role-divider">×</span> graphic designer
-            </p>
-            <p class="hero-desc reveal-up" style="--delay: 0.65s">
-                i turn caffeine into code & ideas into pixels.<br>
-                currently crafting digital experiences that just <em>hit different</em>. ✨
-            </p>
-            <div class="hero-ctas reveal-up" style="--delay: 0.8s">
-                <a href="#work" class="btn btn-primary" id="heroCtaPrimary">
-                    <span>see my work</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-                <a href="#contact" class="btn btn-outline" id="heroCtaSecondary">let's talk</a>
-            </div>
-        </div>
-
-        <div class="scroll-indicator reveal-up" style="--delay: 1.2s">
+        <div class="scroll-indicator">
             <span>scroll</span>
             <div class="scroll-line"></div>
         </div>
@@ -110,20 +149,20 @@
     <div class="marquee-section">
         <div class="marquee-track">
             <div class="marquee-content">
-                <span>WEB DEVELOPER</span><span class="marquee-dot">✦</span>
-                <span>GRAPHIC DESIGNER</span><span class="marquee-dot">✦</span>
+                <span>UI/UX DESIGN</span><span class="marquee-dot">✦</span>
+                <span>WEB DEVELOPMENT</span><span class="marquee-dot">✦</span>
+                <span>GRAPHIC DESIGN</span><span class="marquee-dot">✦</span>
                 <span>PIXEL PERFECTIONIST</span><span class="marquee-dot">✦</span>
-                <span>CREATIVE THINKER</span><span class="marquee-dot">✦</span>
-                <span>CODE ENTHUSIAST</span><span class="marquee-dot">✦</span>
-                <span>DIGITAL CRAFTSMAN</span><span class="marquee-dot">✦</span>
+                <span>BRAND IDENTITY</span><span class="marquee-dot">✦</span>
+                <span>REACT &amp; TYPESCRIPT</span><span class="marquee-dot">✦</span>
             </div>
             <div class="marquee-content" aria-hidden="true">
-                <span>WEB DEVELOPER</span><span class="marquee-dot">✦</span>
-                <span>GRAPHIC DESIGNER</span><span class="marquee-dot">✦</span>
+                <span>UI/UX DESIGN</span><span class="marquee-dot">✦</span>
+                <span>WEB DEVELOPMENT</span><span class="marquee-dot">✦</span>
+                <span>GRAPHIC DESIGN</span><span class="marquee-dot">✦</span>
                 <span>PIXEL PERFECTIONIST</span><span class="marquee-dot">✦</span>
-                <span>CREATIVE THINKER</span><span class="marquee-dot">✦</span>
-                <span>CODE ENTHUSIAST</span><span class="marquee-dot">✦</span>
-                <span>DIGITAL CRAFTSMAN</span><span class="marquee-dot">✦</span>
+                <span>BRAND IDENTITY</span><span class="marquee-dot">✦</span>
+                <span>REACT &amp; TYPESCRIPT</span><span class="marquee-dot">✦</span>
             </div>
         </div>
     </div>
@@ -131,48 +170,144 @@
     <!-- ============ ABOUT ============ -->
     <section id="about">
         <div class="container">
-            <div class="section-header scroll-reveal">
-                <span class="section-number">01</span>
-                <h2 class="section-title">who's this guy? <span class="handwritten">— glad you asked</span></h2>
+            <div class="section-eyebrow scroll-reveal">
+                <span class="eyebrow-num">01</span>
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">about me</span>
             </div>
 
             <div class="about-grid">
-                <div class="about-text scroll-reveal">
-                    <p class="about-lead">
-                        i'm <strong>Dion</strong> — a creative soul who lives at the intersection of <span class="text-blue">code</span> and <span class="text-blue">design</span>.
-                    </p>
-                    <p>
-                        full name's Muhammad Aksal Prasdion Aditya, but let's keep it simple. i don't just build websites; i craft digital experiences that <em>slap</em>. whether it's making a design system feel alive or engineering a seamless user flow, i'm obsessed with the details that most people scroll past.
-                    </p>
-                    <p>
-                        when i'm not pushing pixels or debugging at 3AM, you'll find me exploring new design trends, experimenting with creative tools, or wondering why CSS is like that. 🤷
-                    </p>
+                <div class="about-headline-col scroll-reveal">
+                    <h2 class="section-big-title">
+                        WHO'S<br>
+                        <span class="lime-text">THIS</span><br>
+                        GUY?
+                    </h2>
                 </div>
+                <div class="about-body-col scroll-reveal">
+                    <p class="about-lead">
+                        i'm <strong>Dion</strong> (Muhammad Aksal Prasdion Aditya) | web developer &amp; graphic designer building for both <span class="lime-text fw-bold">functionality</span> and <span class="lime-text fw-bold">clean aesthetics</span>.
+                    </p>
+                    <p class="about-body">
+                        I don't just write code, I build fast web apps and design visual identities that actually look sick. Whether I'm crafting React interfaces or tuning responsive layouts, I keep everything clean, fast, and pixel-perfect.
+                    </p>
+                    <div class="about-tags">
+                        <span class="about-tag snd-hover">🎨 Graphic Design</span>
+                        <span class="about-tag snd-hover">💻 Full-Stack Dev</span>
+                        <span class="about-tag snd-hover">✨ UI/UX Design</span>
+                        <span class="about-tag snd-hover">⚡ React &amp; Node</span>
+                        <span class="about-tag snd-hover">🚀 Fast &amp; Responsive</span>
+                        <span class="about-tag snd-hover">🎯 Pixel-Perfect</span>
+                    </div>
+                </div>
+            </div>
 
-                <div class="about-vibes scroll-reveal">
-                    <div class="vibe-card">
-                        <span class="vibe-emoji">🎨</span>
-                        <span class="vibe-label">pixel perfectionist</span>
+            <!-- Hobbies & Interests -->
+            <div class="vibing-wrap scroll-reveal">
+                <div class="vibing-header">
+                    <span class="vibing-badge">CURRENTLY VIBING ⚡</span>
+                    <h3 class="vibing-title">HOBBIES N INTERESTS</h3>
+                </div>
+                <div class="vibing-grid">
+                    <!-- Spotify / Music Card (Matching Letterboxd format) -->
+                    <div class="vibing-card music-card snd-hover">
+                        <div class="vibing-card-top">
+                            <div class="vibing-badge-pill">
+                                <span class="vibing-icon">🎵</span>
+                                <span class="vibing-tag">ON REPEAT</span>
+                            </div>
+                            <span class="music-handle" style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">Most Listened This Month</span>
+                        </div>
+                        <div class="vibing-body">
+                            <img src="img/cortis_redred.png" alt="REDRED — CORTIS Album Cover" class="vibing-poster music-poster">
+                            <div class="vibing-content">
+                                <h4 class="vibing-track">REDRED</h4>
+                                <p class="vibing-artist">CORTIS • Top Track</p>
+                                <a href="https://open.spotify.com/user/31xl4dkmwqq6nwcu4isdaotls6rm" target="_blank" rel="noopener"
+                                    class="vibing-link snd-click" id="spotifyTrackBtn">
+                                    <span>see my taste in music</span> ↗
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="vibe-card">
-                        <span class="vibe-emoji">☕</span>
-                        <span class="vibe-label">fueled by coffee</span>
+
+                    <!-- Fav Movie Card -->
+                    <div class="vibing-card movie-card snd-hover">
+                        <div class="vibing-card-top">
+                            <div class="vibing-badge-pill">
+                                <span class="vibing-icon">🎬</span>
+                                <span class="vibing-tag">Fav Movie</span>
+                            </div>
+                            <span class="letterboxd-handle" style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@dionicious</span>
+                        </div>
+                        <div class="vibing-body">
+                            <img src="img/dune.png" alt="Dune Movie Poster" class="vibing-poster">
+                            <div class="vibing-content">
+                                <h4 class="vibing-track">Dune</h4>
+                                <p class="vibing-artist">254 films logged • ★★★★★</p>
+                                <a href="https://letterboxd.com/dionicious/" target="_blank" rel="noopener"
+                                    class="vibing-link snd-click" id="letterboxdProfileBtn">
+                                    <span>view letterboxd profile</span> ↗
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="vibe-card">
-                        <span class="vibe-emoji">🌙</span>
-                        <span class="vibe-label">peak at 2AM</span>
+
+                    <!-- Photography Card (Individual) -->
+                    <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="photo" role="button" tabindex="0">
+                        <div class="vibing-card-top">
+                            <div class="vibing-badge-pill">
+                                <span class="vibing-icon">📸</span>
+                                <span class="vibing-tag">Photography</span>
+                            </div>
+                            <span class="hobby-arrow" style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
+                        </div>
+                        <div class="vibing-body">
+                            <img src="img/hobby_photo.png" alt="Photography" class="vibing-poster hobby-card-thumb">
+                            <div class="vibing-content">
+                                <h4 class="vibing-track">Photography</h4>
+                                <p class="vibing-artist">Street aesthetics &amp; color grading</p>
+                                <span class="vibing-link">view gallery ↗</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="vibe-card">
-                        <span class="vibe-emoji">🚀</span>
-                        <span class="vibe-label">always shipping</span>
+
+                    <!-- Graphic Design Card (Individual) -->
+                    <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="design" role="button" tabindex="0">
+                        <div class="vibing-card-top">
+                            <div class="vibing-badge-pill">
+                                <span class="vibing-icon">🎨</span>
+                                <span class="vibing-tag">Graphic Design</span>
+                            </div>
+                            <span class="hobby-arrow" style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
+                        </div>
+                        <div class="vibing-body">
+                            <img src="img/hobby_content.png" alt="Graphic Design" class="vibing-poster hobby-card-thumb">
+                            <div class="vibing-content">
+                                <h4 class="vibing-track">Graphic Design</h4>
+                                <p class="vibing-artist">Visual identity &amp; brand systems</p>
+                                <span class="vibing-link">view showcase ↗</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="vibe-card">
-                        <span class="vibe-emoji">🎮</span>
-                        <span class="vibe-label">gamer at heart</span>
-                    </div>
-                    <div class="vibe-card">
-                        <span class="vibe-emoji">💡</span>
-                        <span class="vibe-label">idea machine</span>
+
+                    <!-- Content Creating Card (Individual) -->
+                    <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="content" role="button" tabindex="0">
+                        <div class="vibing-card-top">
+                            <div class="vibing-badge-pill">
+                                <span class="vibing-icon">🎙️</span>
+                                <span class="vibing-tag">Content Creating</span>
+                            </div>
+                            <span class="hobby-arrow" style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
+                        </div>
+                        <div class="vibing-body">
+                            <img src="img/hobby_content.png" alt="Content Creating" class="vibing-poster hobby-card-thumb">
+                            <div class="vibing-content">
+                                <h4 class="vibing-track">Content Creating</h4>
+                                <p class="vibing-artist">Song covers &amp; video edits</p>
+                                <span class="vibing-link">view media ↗</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -180,60 +315,61 @@
     </section>
 
     <!-- ============ SKILLS ============ -->
-    <section id="skills">
+    <section id="skills" class="skills-section">
         <div class="container">
-            <div class="section-header scroll-reveal">
-                <span class="section-number">02</span>
-                <h2 class="section-title">my toolkit <span class="handwritten">— the good stuff</span></h2>
+            <div class="section-eyebrow scroll-reveal">
+                <span class="eyebrow-num">02</span>
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">my toolkit</span>
             </div>
 
-            <div class="skills-categories">
-                <!-- Development -->
-                <div class="skill-category scroll-reveal">
-                    <h3 class="skill-category-title">
-                        <span class="skill-icon">⚡</span> development
-                    </h3>
+            <div class="about-headline-col scroll-reveal">
+                <h2 class="section-big-title">
+                    WHAT I<br>
+                    <span class="lime-text">DO BEST</span><br>
+                </h2>
+            </div>
+
+            <div class="skills-two-col">
+                <div class="skill-block scroll-reveal">
+                    <div class="skill-block-header">
+                        <span class="skill-block-icon">💻</span>
+                        <h3 class="skill-block-title">Development &amp; Engineering</h3>
+                    </div>
                     <div class="skill-pills">
-                        <span class="skill-pill">HTML / CSS</span>
-                        <span class="skill-pill">JavaScript</span>
-                        <span class="skill-pill">TypeScript</span>
-                        <span class="skill-pill">React</span>
-                        <span class="skill-pill">Next.js</span>
-                        <span class="skill-pill">Node.js</span>
-                        <span class="skill-pill">Python</span>
-                        <span class="skill-pill">Git</span>
-                        <span class="skill-pill">REST APIs</span>
-                        <span class="skill-pill">Tailwind CSS</span>
+                        <span class="skill-pill snd-hover">HTML5 / CSS3</span>
+                        <span class="skill-pill snd-hover">JavaScript (ES6+)</span>
+                        <span class="skill-pill snd-hover">TypeScript</span>
+                        <span class="skill-pill snd-hover">React.js</span>
+                        <span class="skill-pill snd-hover">Next.js</span>
+                        <span class="skill-pill snd-hover">Node.js</span>
+                        <span class="skill-pill snd-hover">Python</span>
+                        <span class="skill-pill snd-hover">RESTful APIs</span>
+                        <span class="skill-pill snd-hover">Git / GitHub</span>
+                        <span class="skill-pill snd-hover">Tailwind CSS</span>
+                        <span class="skill-pill snd-hover">WebAssembly</span>
+                        <span class="skill-pill snd-hover">SQL &amp; NoSQL</span>
                     </div>
                 </div>
 
-                <!-- Design -->
-                <div class="skill-category scroll-reveal">
-                    <h3 class="skill-category-title">
-                        <span class="skill-icon">🎨</span> design
-                    </h3>
-                    <div class="skill-pills">
-                        <span class="skill-pill">Figma</span>
-                        <span class="skill-pill">Adobe Photoshop</span>
-                        <span class="skill-pill">Adobe Illustrator</span>
-                        <span class="skill-pill">UI/UX Design</span>
-                        <span class="skill-pill">Responsive Design</span>
-                        <span class="skill-pill">Brand Identity</span>
+                <div class="skill-block scroll-reveal">
+                    <div class="skill-block-header">
+                        <span class="skill-block-icon">🎨</span>
+                        <h3 class="skill-block-title">Design &amp; Creative</h3>
                     </div>
-                </div>
-
-                <!-- Other -->
-                <div class="skill-category scroll-reveal">
-                    <h3 class="skill-category-title">
-                        <span class="skill-icon">🧠</span> other cool things
-                    </h3>
                     <div class="skill-pills">
-                        <span class="skill-pill">Problem Solving</span>
-                        <span class="skill-pill">SEO</span>
-                        <span class="skill-pill">Performance Optimization</span>
-                        <span class="skill-pill">Agile / Scrum</span>
-                        <span class="skill-pill">Technical Writing</span>
-                        <span class="skill-pill">Video Editing</span>
+                        <span class="skill-pill snd-hover">Figma (UI/UX)</span>
+                        <span class="skill-pill snd-hover">Adobe Photoshop</span>
+                        <span class="skill-pill snd-hover">Adobe Illustrator</span>
+                        <span class="skill-pill snd-hover">Wireframing</span>
+                        <span class="skill-pill snd-hover">Prototyping</span>
+                        <span class="skill-pill snd-hover">Design Systems</span>
+                        <span class="skill-pill snd-hover">Brand Identity</span>
+                        <span class="skill-pill snd-hover">Typography</span>
+                        <span class="skill-pill snd-hover">Color Theory</span>
+                        <span class="skill-pill snd-hover">Micro-Animations</span>
+                        <span class="skill-pill snd-hover">Visual Storytelling</span>
+                        <span class="skill-pill snd-hover">Creative Direction</span>
                     </div>
                 </div>
             </div>
@@ -243,71 +379,62 @@
     <!-- ============ WORK / PROJECTS ============ -->
     <section id="work">
         <div class="container">
-            <div class="section-header scroll-reveal">
-                <span class="section-number">03</span>
-                <h2 class="section-title">stuff i've built <span class="handwritten">— pretty proud of these</span></h2>
+            <div class="section-eyebrow scroll-reveal">
+                <span class="eyebrow-num">03</span>
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">projects</span>
             </div>
 
+            <h2 class="section-big-title scroll-reveal">
+                STUFF I'VE<br><span class="lime-text">BUILT</span>
+            </h2>
+
             <div class="projects-grid">
-                <!-- Project 1: Media Converter -->
+                <!-- Project 1 — Switchy (screenshot) -->
                 <article class="project-card scroll-reveal" id="project1">
-                    <div class="project-image">
-                        <div class="project-image-bg project-bg-1">
-                            <div class="project-icon-grid">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                            </div>
-                        </div>
-                        <span class="project-badge">Featured</span>
+                    <div class="project-visual project-img-1">
+                        <img src="img/switchy.jpg" alt="Switchy — Local & Private Media Converter"
+                            class="project-screenshot">
+                        <span class="project-type-tag">Full-Stack ⚡</span>
                     </div>
                     <div class="project-info">
-                        <div class="project-header">
-                            <h3 class="project-name">ConvertIt</h3>
-                            <p class="project-type">Media Converter</p>
-                        </div>
-                        <p class="project-desc">
-                            a slick media converter that handles your files without the drama. upload, convert, download — no cap, no bloatware, just works. ⚡
-                        </p>
+                        <h3 class="project-name">Switchy</h3>
+                        <p class="project-desc">Local &amp; private in-browser media converter / handles Images, Videos
+                            &amp; Audio using WebAssembly &amp; FFmpeg. Zero server, 100% private.</p>
                         <div class="project-tags">
                             <span class="project-tag">React</span>
                             <span class="project-tag">Node.js</span>
                             <span class="project-tag">FFmpeg</span>
-                            <span class="project-tag">WebAssembly</span>
+                            <span class="project-tag">WASM</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" aria-label="View live project">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                <span>live</span>
-                            </a>
-                            <a href="#" class="project-link" aria-label="View source code">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                <span>code</span>
-                            </a>
+                            <a href="#" class="proj-link snd-click">live ↗</a>
+                            <a href="#" class="proj-link snd-click">code ↗</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Project 2: AI Learning App -->
+                <!-- Project 2 -->
                 <article class="project-card scroll-reveal" id="project2">
-                    <div class="project-image">
-                        <div class="project-image-bg project-bg-2">
-                            <div class="project-icon-grid">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
+                    <div class="project-visual project-bg-2">
+                        <div class="project-icon-grid">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                            </svg>
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
                         </div>
-                        <span class="project-badge">Featured</span>
+                        <span class="project-type-tag">AI Platform 🧠</span>
                     </div>
                     <div class="project-info">
-                        <div class="project-header">
-                            <h3 class="project-name">BrainWave</h3>
-                            <p class="project-type">AI Learning Platform</p>
-                        </div>
-                        <p class="project-desc">
-                            an AI-powered learning platform that adapts to how you actually think. personalized paths, smart quizzes, zero boredom — because studying shouldn't feel like a chore. 🧠
-                        </p>
+                        <h3 class="project-name">BrainWave</h3>
+                        <p class="project-desc">AI-powered learning platform with dynamic study paths &amp; adaptive
+                            quiz engines.</p>
                         <div class="project-tags">
                             <span class="project-tag">Next.js</span>
                             <span class="project-tag">Python</span>
@@ -315,59 +442,191 @@
                             <span class="project-tag">TailwindCSS</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" aria-label="View live project">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                <span>live</span>
-                            </a>
-                            <a href="#" class="project-link" aria-label="View source code">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                <span>code</span>
-                            </a>
+                            <a href="#" class="proj-link snd-click">live ↗</a>
+                            <a href="#" class="proj-link snd-click">code ↗</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card scroll-reveal" id="project3">
+                    <div class="project-visual project-bg-3">
+                        <div class="project-icon-grid">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2a7 7 0 1 0 7 7" />
+                            </svg>
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                <polyline points="2 17 12 22 22 17" />
+                                <polyline points="2 12 12 17 22 12" />
+                            </svg>
+                        </div>
+                        <span class="project-type-tag">Design System 🎨</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Aura DS</h3>
+                        <p class="project-desc">Dark-mode component library with design tokens, palettes &amp; motion
+                            guidelines.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Figma</span>
+                            <span class="project-tag">UI/UX</span>
+                            <span class="project-tag">Design System</span>
+                            <span class="project-tag">Branding</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="proj-link snd-click">figma ↗</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card scroll-reveal" id="project4">
+                    <div class="project-visual project-bg-4">
+                        <div class="project-icon-grid">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
+                            </svg>
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                            </svg>
+                        </div>
+                        <span class="project-type-tag">Branding 🚀</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">PixelCraft</h3>
+                        <p class="project-desc">High-energy brand identity &amp; interactive portfolio for a creative
+                            digital studio.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Graphic Design</span>
+                            <span class="project-tag">HTML/CSS</span>
+                            <span class="project-tag">Branding</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="proj-link snd-click">live ↗</a>
                         </div>
                     </div>
                 </article>
             </div>
 
             <div class="more-projects scroll-reveal">
-                <p class="handwritten">more cool stuff coming soon...</p>
+                <p>more cooking... 🍳</p>
             </div>
         </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section id="contact">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <div class="contact-content scroll-reveal">
-                <p class="contact-label">04 — what's next?</p>
-                <h2 class="contact-heading">
-                    let's create something<br>
-                    <span class="text-blue">ridiculously cool</span> together.
+            <div class="contact-inner scroll-reveal">
+                <p class="contact-eyebrow">04 / what's next?</p>
+                <h2 class="contact-big-title">
+                    LET'S BUILD<br>
+                    SOMETHING<br>
+                    <span class="lime-text">WILD!</span>
                 </h2>
                 <p class="contact-desc">
-                    got a wild idea? a project that needs some creative juice? or just wanna say hey?<br>
-                    my inbox is always open — don't be shy. worst i can say is "let's do it." 🤝
+                    got a project? a collab idea? or just wanna say hi?<br>
+                    worst i can say is <strong><em style="color: #1E45FB;">gasss!</em></strong> 🚀
                 </p>
 
-                <a href="mailto:dionaditya59@gmail.com" class="btn btn-primary btn-large" id="contactEmailBtn">
-                    <span>say hello</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                <div class="contact-cta-group">
+                    <a href="mailto:dionaditya59@gmail.com" class="btn-lime btn-large snd-click" id="contactEmailBtn">
+                        say hi ↗
+                    </a>
+                    <button class="btn-ghost-lime btn-large snd-click" id="copyEmailBtn" title="Copy email">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                        </svg>
+                        copy email
+                    </button>
+                </div>
+
+                <!-- Quick Contact Form -->
+                <div class="contact-form-wrap scroll-reveal">
+                    <h3 class="form-title">or drop me a message directly ↓</h3>
+                    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms access key — replace with yours from web3forms.com -->
+                        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                        <input type="hidden" name="subject" value="New message from portfolio">
+                        <input type="hidden" name="from_name" value="Dion's Portfolio">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">your name</label>
+                                <input type="text" id="contactName" name="name" placeholder="e.g. billie eilish" required
+                                    autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">your email</label>
+                                <input type="email" id="contactEmail" name="email" placeholder="billieeilish@example.com"
+                                    required autocomplete="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMsg">your message</label>
+                            <textarea id="contactMsg" name="message" rows="4"
+                                placeholder="yo, dude! i need a sick website for my startup..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-lime btn-large form-submit snd-click" id="formSubmitBtn">
+                            <span class="submit-label">send it ↗</span>
+                            <span class="submit-loading" style="display:none">sending...</span>
+                        </button>
+                    </form>
+                    <div class="form-success" id="formSuccess" style="display:none">
+                        <span class="success-icon">✦</span>
+                        <p>message sent! i'll hit you back soon 🚀</p>
+                    </div>
+                </div>
 
                 <div class="social-links">
-                    <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener" class="social-link" aria-label="Instagram" id="socialInstagram">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener" class="social-link"
+                        aria-label="Instagram" id="socialInstagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
                         <span>instagram</span>
                     </a>
-                    <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn" id="socialLinkedin">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener" class="social-link"
+                        aria-label="LinkedIn" id="socialLinkedin">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
                         <span>linkedin</span>
                     </a>
-                    <a href="https://youtube.com/@prasdionaditya" target="_blank" rel="noopener" class="social-link" aria-label="YouTube" id="socialYoutube">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                    <a href="https://youtube.com/@prasdionaditya" target="_blank" rel="noopener" class="social-link"
+                        aria-label="YouTube" id="socialYoutube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z" />
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                        </svg>
                         <span>youtube</span>
                     </a>
-                    <a href="https://twitter.com/prasdionaditya" target="_blank" rel="noopener" class="social-link" aria-label="Twitter / X" id="socialTwitter">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+                    <a href="https://twitter.com/prasdionaditya" target="_blank" rel="noopener" class="social-link"
+                        aria-label="Twitter / X" id="socialTwitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                        </svg>
                         <span>twitter / x</span>
                     </a>
                 </div>
@@ -379,19 +638,39 @@
     <footer id="footer">
         <div class="container">
             <div class="footer-content">
-                <p class="footer-credit">
-                    designed & built by <span class="text-blue">dion</span> with lots of ☕ and questionable sleep schedules
-                </p>
-                <p class="footer-copy">© 2026 — made with 💙</p>
+                <p class="footer-credit">designed &amp; built by <span class="lime-text">dion</span> | code meets design
+                    ✦</p>
+                <p class="footer-copy">© 2026</p>
             </div>
         </div>
     </footer>
 
+    <!-- ============ HOBBY PORTFOLIO MODAL ============ -->
+    <div class="hobby-modal-overlay" id="hobbyModal" aria-hidden="true">
+        <div class="hobby-modal-card">
+            <button class="hobby-modal-close snd-click" id="hobbyModalClose" aria-label="Close modal">✕</button>
+            <div class="hobby-modal-content" id="hobbyModalContent">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- ============ BACK TO TOP ============ -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    <button class="back-to-top snd-click" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5" />
+            <polyline points="5 12 12 5 19 12" />
+        </svg>
     </button>
+
+    <!-- ============ TOAST ============ -->
+    <div class="toast-notification" id="toastNotification">
+        <span class="toast-icon">✦</span>
+        <span class="toast-msg">Email copied!</span>
+    </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

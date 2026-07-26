@@ -1,330 +1,774 @@
 /* ============================================================
    DION'S PORTFOLIO — script.js
-   Animations, custom cursor, scroll reveals, interactions
+   Bold × Fun × Interactive
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // ============ PRELOADER ============
     const preloader = document.getElementById('preloader');
+    const body = document.body;
 
-    const dismissPreloader = () => {
-        preloader.classList.add('done');
-        document.body.classList.add('loaded');
-    };
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.classList.add('done');
+            body.classList.add('loaded');
+        }, 1500);
+    });
 
-    // Dismiss after 2.2s (enough time for the animation)
-    setTimeout(dismissPreloader, 2200);
+    // Fallback
+    setTimeout(() => {
+        preloader?.classList.add('done');
+        body.classList.add('loaded');
+    }, 2500);
 
 
-    // ============ CUSTOM CURSOR ============
-    const cursorDot = document.getElementById('cursorDot');
-    const cursorRing = document.getElementById('cursorRing');
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    // ============ CUSTOM HAND CURSOR ============
+    const cursorHand = document.getElementById('cursorHand');
 
-    if (!isTouchDevice && cursorDot && cursorRing) {
-        let mouseX = 0, mouseY = 0;
-        let ringX = 0, ringY = 0;
+    if (cursorHand && window.matchMedia('(pointer: fine)').matches) {
+        let mouseX = -100, mouseY = -100;
+        let curX = -100, curY = -100;
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-
-            // Dot follows instantly
-            cursorDot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+            cursorHand.classList.add('visible');
         });
 
-        // Ring follows with lerp (smooth delay)
-        const animateRing = () => {
-            ringX += (mouseX - ringX) * 0.15;
-            ringY += (mouseY - ringY) * 0.15;
-            cursorRing.style.transform = `translate(${ringX - 18}px, ${ringY - 18}px)`;
-            requestAnimationFrame(animateRing);
+        const animateHandCursor = () => {
+            curX += (mouseX - curX) * 0.35;
+            curY += (mouseY - curY) * 0.35;
+
+            // Offset (-8px, -2px) aligns the index fingertip with the mouse pointer
+            cursorHand.style.transform = `translate(${curX - 8}px, ${curY - 2}px)`;
+            requestAnimationFrame(animateHandCursor);
         };
-        animateRing();
+        animateHandCursor();
 
-        // Hover effect on interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .skill-pill, .vibe-card, .project-card');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorDot.classList.add('hover');
-                cursorRing.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorDot.classList.remove('hover');
-                cursorRing.classList.remove('hover');
-            });
+        // Hover animation on interactive elements
+        document.addEventListener('mouseover', (e) => {
+            const el = e.target.closest('a, button, [role="button"], .snd-hover, .snd-click');
+            if (el) cursorHand.classList.add('hover');
+        });
+        document.addEventListener('mouseout', (e) => {
+            const el = e.target.closest('a, button, [role="button"], .snd-hover, .snd-click');
+            if (el) cursorHand.classList.remove('hover');
         });
 
-        // Hide cursor when leaving window
-        document.addEventListener('mouseleave', () => {
-            cursorDot.classList.add('hidden');
-            cursorRing.classList.add('hidden');
-        });
-        document.addEventListener('mouseenter', () => {
-            cursorDot.classList.remove('hidden');
-            cursorRing.classList.remove('hidden');
-        });
+        // Click / tap animation
+        document.addEventListener('mousedown', () => cursorHand.classList.add('clicking'));
+        document.addEventListener('mouseup', () => cursorHand.classList.remove('clicking'));
+
+        document.addEventListener('mouseleave', () => cursorHand.classList.remove('visible'));
+        document.addEventListener('mouseenter', () => cursorHand.classList.add('visible'));
     }
 
 
-    // ============ NAVBAR SCROLL BEHAVIOR ============
+    // ============ NAVBAR ============
     const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
-    let navHideTimeout;
-
-    const handleNavbarScroll = () => {
-        const currentScroll = window.scrollY;
-
-        if (currentScroll > 80) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        lastScroll = currentScroll;
-    };
-
-    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-
-
-    // ============ MOBILE MENU ============
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    if (navToggle && mobileMenu) {
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    // Scroll effects
+    const handleScroll = () => {
+        const scrolled = window.scrollY > 50;
+        navbar.classList.toggle('scrolled', scrolled);
+
+        // Back to top button
+        const btt = document.getElementById('backToTop');
+        if (btt) btt.classList.toggle('visible', window.scrollY > 400);
+
+        // Active nav link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
         });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-    }
-
-
-    // ============ SCROLL REVEAL (Intersection Observer) ============
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Add staggered delay based on sibling position
-                const parent = entry.target.parentElement;
-                const siblings = parent ? parent.querySelectorAll('.scroll-reveal') : [];
-                let siblingIndex = 0;
-                siblings.forEach((sib, i) => {
-                    if (sib === entry.target) siblingIndex = i;
-                });
-
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, siblingIndex * 100);
-
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -60px 0px'
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-
-    // ============ SMOOTH SCROLL for anchor links ============
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            const targetId = anchor.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetEl = document.querySelector(targetId);
-            if (targetEl) {
-                e.preventDefault();
-                targetEl.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-
-
-    // ============ BACK TO TOP ============
-    const backToTopBtn = document.getElementById('backToTop');
-
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 600) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        }, { passive: true });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-
-    // ============ ACTIVE NAV LINK HIGHLIGHT ============
-    const sections = document.querySelectorAll('section[id]');
-    const navLinksAll = document.querySelectorAll('.nav-link');
-
-    const highlightNavLink = () => {
-        const scrollPos = window.scrollY + 200;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                navLinksAll.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
         });
     };
 
-    window.addEventListener('scroll', highlightNavLink, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    // Mobile toggle
+    const toggleMobile = () => {
+        const isOpen = mobileMenu.classList.toggle('active');
+        navToggle.classList.toggle('active', isOpen);
+        body.style.overflow = isOpen ? 'hidden' : '';
+    };
+
+    navToggle?.addEventListener('click', toggleMobile);
+    mobileLinks.forEach(link => link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+        body.style.overflow = '';
+    }));
 
 
-    // ============ SKILL PILLS STAGGER ANIMATION ============
-    const skillCategories = document.querySelectorAll('.skill-category');
+    // ============ SCROLL REVEAL ============
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-    const skillObserver = new IntersectionObserver((entries) => {
+    document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+
+    // ============ BACK TO TOP ============
+    const backToTop = document.getElementById('backToTop');
+    backToTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+
+    // ============ COPY EMAIL ============
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const toast = document.getElementById('toastNotification');
+    let toastTimeout;
+
+    const showToast = (msg) => {
+        if (!toast) return;
+        const msgEl = toast.querySelector('.toast-msg');
+        if (msgEl) msgEl.textContent = msg;
+        toast.classList.add('active');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.classList.remove('active'), 2800);
+    };
+
+    copyEmailBtn?.addEventListener('click', async () => {
+        const email = 'dionaditya59@gmail.com';
+        try {
+            await navigator.clipboard.writeText(email);
+            showToast('Email copied! ✦');
+        } catch {
+            const ta = document.createElement('textarea');
+            ta.value = email;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('Email copied! ✦');
+        }
+    });
+
+
+    // ============ OTW RING — pause on hover ============
+    const otwRing = document.getElementById('otwRing');
+    if (otwRing) {
+        otwRing.addEventListener('mouseenter', () => {
+            otwRing.style.animationPlayState = 'paused';
+        });
+        otwRing.addEventListener('mouseleave', () => {
+            otwRing.style.animationPlayState = 'running';
+        });
+    }
+
+
+    // ============ PROJECT CARDS — tilt effect ============
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
+            const y = ((e.clientY - rect.top) / rect.height - 0.5) * 12;
+            card.style.transform = `translateY(-8px) perspective(600px) rotateX(${-y}deg) rotateY(${x}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+
+
+    // ============ SKILL PILLS — stagger reveal ============
+    const skillBlocks = document.querySelectorAll('.skill-block');
+    const pillObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const pills = entry.target.querySelectorAll('.skill-pill');
-                pills.forEach((pill, index) => {
-                    pill.style.opacity = '0';
-                    pill.style.transform = 'translateY(15px) scale(0.95)';
-                    pill.style.transition = `opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.05}s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.05}s`;
-
-                    setTimeout(() => {
-                        pill.style.opacity = '1';
-                        pill.style.transform = 'translateY(0) scale(1)';
-                    }, 50);
+                pills.forEach((pill, i) => {
+                    pill.style.animationDelay = `${i * 0.06}s`;
+                    pill.classList.add('pill-animate');
                 });
-
-                skillObserver.unobserve(entry.target);
+                pillObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.2 });
 
-    skillCategories.forEach(cat => skillObserver.observe(cat));
+    skillBlocks.forEach(block => pillObserver.observe(block));
 
 
-    // ============ VIBE CARDS STAGGER ============
-    const vibeContainer = document.querySelector('.about-vibes');
-
-    if (vibeContainer) {
-        const vibeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const cards = entry.target.querySelectorAll('.vibe-card');
-                    cards.forEach((card, index) => {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        card.style.transition = `opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08}s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08}s`;
-
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 50);
-                    });
-
-                    vibeObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        vibeObserver.observe(vibeContainer);
-    }
-
-
-    // ============ PROJECT CARD TILT EFFECT ============
-    const projectCards = document.querySelectorAll('.project-card');
-
-    projectCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = (y - centerY) / centerY * -4;
-            const rotateY = (x - centerX) / centerX * 4;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    // ============ ABOUT TAGS — interactive bounce ============
+    const aboutTags = document.querySelectorAll('.about-tag');
+    aboutTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            tag.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(0.9)' },
+                { transform: 'scale(1.1)' },
+                { transform: 'scale(1)' }
+            ], { duration: 300, easing: 'ease-out' });
         });
     });
 
 
-    // ============ MAGNETIC BUTTON EFFECT ============
-    const magneticBtns = document.querySelectorAll('.btn-primary');
+    // ============ SMOOTH ANCHOR SCROLLING ============
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 
-    magneticBtns.forEach(btn => {
+
+    // ============ PARALLAX GRID ============
+    const heroGrid = document.querySelector('.hero-grid');
+    if (heroGrid && window.matchMedia('(min-width: 769px)').matches) {
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            heroGrid.style.transform = `translateY(${y * 0.15}px)`;
+        }, { passive: true });
+    }
+
+
+    // ============ MARQUEE DRAG ============
+    const marqueeTrack = document.querySelector('.marquee-track');
+    if (marqueeTrack) {
+        marqueeTrack.addEventListener('mousedown', () => {
+            marqueeTrack.style.animationPlayState = 'paused';
+        });
+        document.addEventListener('mouseup', () => {
+            marqueeTrack.style.animationPlayState = 'running';
+        });
+    }
+
+
+    // ============ LETTERBOXD LIVE RSS SYNC ============
+    const syncLetterboxd = async () => {
+        const movieCard = document.querySelector('.movie-card');
+        if (!movieCard) return;
+
+        const posterImg = movieCard.querySelector('.vibing-poster');
+        const trackTitle = movieCard.querySelector('.vibing-track');
+        const trackArtist = movieCard.querySelector('.vibing-artist');
+        const profileLink = movieCard.querySelector('.vibing-link');
+
+        try {
+            const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fletterboxd.com%2Fdionicious%2Frss%2F');
+            const data = await res.json();
+
+            if (data.status === 'ok' && data.items && data.items.length > 0) {
+                const latest = data.items[0];
+                const titleParts = latest.title.split(' - ');
+                const rawTitle = titleParts[0] || latest.title;
+                const rating = titleParts[1] || '★★★★★';
+                const filmName = rawTitle.replace(/,\s*\d{4}$/, '');
+
+                const imgMatch = latest.description ? latest.description.match(/<img[^>]+src="([^">]+)"/) : null;
+                if (imgMatch && imgMatch[1]) {
+                    posterImg.src = imgMatch[1];
+                    posterImg.alt = `${filmName} Poster`;
+                }
+
+                trackTitle.textContent = filmName;
+                trackArtist.textContent = `Latest Log • ${rating}`;
+                if (latest.link && profileLink) {
+                    profileLink.href = latest.link;
+                    const span = profileLink.querySelector('span');
+                    if (span) span.textContent = 'read on letterboxd';
+                }
+            }
+        } catch (e) {
+            console.warn('Letterboxd live sync fallback active:', e);
+        }
+    };
+
+    syncLetterboxd();
+
+
+    // Helper to dynamically fetch official high-res album artwork via iTunes Search API
+    const fetchAlbumCover = async (artist, track) => {
+        try {
+            const query = encodeURIComponent(`${artist} ${track}`);
+            const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=10`);
+            const data = await res.json();
+            if (data.results && data.results.length > 0) {
+                const artistLower = artist.toLowerCase();
+                // Find exact artist match first
+                const match = data.results.find(item => 
+                    item.artistName && (
+                        item.artistName.toLowerCase().includes(artistLower) || 
+                        artistLower.includes(item.artistName.toLowerCase())
+                    )
+                );
+                const target = match || data.results[0];
+                if (target && target.artworkUrl100) {
+                    return target.artworkUrl100.replace('100x100bb', '600x600bb');
+                }
+            }
+        } catch (e) {
+            console.warn('iTunes album cover fetch fallback:', e);
+        }
+        return null;
+    };
+
+    // ============ LAST.FM LIVE API SYNC ============
+    const LASTFM_CONFIG = {
+        USERNAME: 'dionicious',
+        API_KEY: 'b25b959554ed76058ac220b7b2e0a026'
+    };
+
+    const syncLastFm = async () => {
+        const musicCard = document.querySelector('.music-card');
+        if (!musicCard) return;
+
+        const posterImg = musicCard.querySelector('.music-poster');
+        const trackTitle = musicCard.querySelector('.vibing-track');
+        const trackArtist = musicCard.querySelector('.vibing-artist');
+        const trackLink = musicCard.querySelector('#spotifyTrackBtn');
+        const musicHandle = musicCard.querySelector('.music-handle');
+
+        try {
+            // 1. Try fetching top tracks for 1 month
+            let url = `https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${LASTFM_CONFIG.USERNAME}&period=1month&limit=1&api_key=${LASTFM_CONFIG.API_KEY}&format=json`;
+            let res = await fetch(url);
+            let data = await res.json();
+
+            let track = data?.toptracks?.track?.[0];
+            let isRecent = false;
+
+            // 2. Fallback to recent tracks if top tracks is empty
+            if (!track) {
+                url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LASTFM_CONFIG.USERNAME}&limit=1&api_key=${LASTFM_CONFIG.API_KEY}&format=json`;
+                res = await fetch(url);
+                data = await res.json();
+                track = data?.recenttracks?.track?.[0];
+                isRecent = true;
+            }
+
+            if (track) {
+                const trackName = track.name;
+                const artistName = typeof track.artist === 'string' ? track.artist : (track.artist?.name || 'Artist');
+                const subtext = isRecent ? 'Recently Scrobbled' : (track.playcount ? `${track.playcount} plays this month` : 'Top Track');
+
+                if (trackTitle) trackTitle.textContent = trackName;
+                if (trackArtist) trackArtist.textContent = `${artistName} • ${subtext}`;
+                if (musicHandle) musicHandle.textContent = `@${LASTFM_CONFIG.USERNAME}`;
+                if (trackLink) {
+                    trackLink.href = 'https://open.spotify.com/user/31xl4dkmwqq6nwcu4isdaotls6rm';
+                    const span = trackLink.querySelector('span');
+                    if (span) span.textContent = 'see my taste in music';
+                }
+
+                // Try fetching official high-res album cover
+                const liveCover = await fetchAlbumCover(artistName, trackName);
+                if (liveCover) {
+                    posterImg.src = liveCover;
+                    posterImg.alt = `${trackName} — ${artistName}`;
+                } else if (track.image && track.image.length > 0) {
+                    const imgUrl = track.image[track.image.length - 1]['#text'];
+                    if (imgUrl && imgUrl.startsWith('http') && !imgUrl.includes('2a96cbd8b46e442fc41c2b86b821562f')) {
+                        posterImg.src = imgUrl;
+                        posterImg.alt = `${trackName} — ${artistName}`;
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn('Last.fm live sync fallback active:', e);
+        }
+    };
+
+    syncLastFm();
+
+
+    // ============ CONTACT FORM (WEB3FORMS) ============
+    const contactForm = document.getElementById('contactForm');
+    const formSubmitBtn = document.getElementById('formSubmitBtn');
+    const formSuccess = document.getElementById('formSuccess');
+
+    contactForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitLabel = formSubmitBtn.querySelector('.submit-label');
+        const submitLoading = formSubmitBtn.querySelector('.submit-loading');
+        submitLabel.style.display = 'none';
+        submitLoading.style.display = 'inline';
+        formSubmitBtn.disabled = true;
+
+        try {
+            const formData = new FormData(contactForm);
+            const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+            const data = await res.json();
+            if (data.success) {
+                contactForm.style.display = 'none';
+                formSuccess.style.display = 'flex';
+                playSound('success');
+            } else {
+                throw new Error(data.message || 'Submission failed');
+            }
+        } catch (err) {
+            submitLabel.style.display = 'inline';
+            submitLoading.style.display = 'none';
+            formSubmitBtn.disabled = false;
+            showToast('oops! something went wrong 😅');
+        }
+    });
+
+
+    // ============ UI SOUNDS (ALWAYS ENABLED) ============
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    const getSoundCtx = () => {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        return audioCtx;
+    };
+
+    // Auto unlock AudioContext on first interaction
+    const unlockAudio = () => {
+        getSoundCtx();
+        document.removeEventListener('click', unlockAudio);
+        document.removeEventListener('keydown', unlockAudio);
+    };
+    document.addEventListener('click', unlockAudio);
+    document.addEventListener('keydown', unlockAudio);
+
+    const playSound = (type = 'click') => {
+        if (!soundEnabled) return;
+        try {
+            const ctx = getSoundCtx();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            const now = ctx.currentTime;
+
+            if (type === 'click') {
+                osc.frequency.setValueAtTime(520, now);
+                osc.frequency.exponentialRampToValueAtTime(340, now + 0.09);
+                gain.gain.setValueAtTime(0.18, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.13);
+                osc.start(now); osc.stop(now + 0.14);
+            } else if (type === 'hover') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(700, now);
+                gain.gain.setValueAtTime(0.05, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+                osc.start(now); osc.stop(now + 0.07);
+            } else if (type === 'success') {
+                [440, 550, 660].forEach((freq, i) => {
+                    const o2 = ctx.createOscillator();
+                    const g2 = ctx.createGain();
+                    o2.connect(g2); g2.connect(ctx.destination);
+                    o2.type = 'sine';
+                    const t = now + i * 0.13;
+                    o2.frequency.setValueAtTime(freq, t);
+                    g2.gain.setValueAtTime(0.14, t);
+                    g2.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+                    o2.start(t); o2.stop(t + 0.22);
+                });
+                return;
+            }
+        } catch (e) { }
+    };
+
+    // Expose globally so form handler & modals can call it
+    window.playSound = playSound;
+
+    // Wire click sounds to elements
+    document.querySelectorAll('.snd-click').forEach(el => {
+        el.addEventListener('click', () => playSound('click'));
+    });
+
+    // Wire hover sounds to elements
+    document.querySelectorAll('.snd-hover').forEach(el => {
+        el.addEventListener('mouseenter', () => playSound('hover'));
+    });
+
+
+    // ============ MAGNETIC BUTTONS ============
+    document.querySelectorAll('.btn-lime, .btn-ghost, .nav-cta').forEach(btn => {
+        btn.classList.add('magnetic-btn');
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
-
-            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) translateY(-3px)`;
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
         });
-
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = '';
         });
     });
 
 
-    // ============ PARALLAX SHAPES ============
-    const shapes = document.querySelectorAll('.shape');
+    // ============ RIPPLE EFFECT ON BUTTONS ============
+    document.querySelectorAll('.btn-lime, .btn-ghost, .nav-cta').forEach(btn => {
+        btn.classList.add('ripple-wrap');
+        btn.addEventListener('click', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+            ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+            btn.appendChild(ripple);
+            ripple.addEventListener('animationend', () => ripple.remove());
+        });
+    });
 
-    if (shapes.length && !isTouchDevice) {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
 
-            shapes.forEach((shape, index) => {
-                const speed = 0.03 + (index * 0.015);
-                shape.style.transform = `translateY(${scrollY * speed}px)`;
+    // ============ 3D TILT ON PROJECT CARDS ============
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            const tiltX = (y - 0.5) * 8;   // -4 to +4 deg
+            const tiltY = (x - 0.5) * -8;
+            card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-6px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+
+
+    // ============ MOUSE-FOLLOW GLOW ON PROJECT CARDS ============
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+    });
+
+
+    // ============ TITLE HOVER SCRAMBLE ANIMATION ============
+    const scrambleChars = '!<>-_\\/[]{}—=+*^?#A1B0X9';
+
+    class TextScramble {
+        constructor(el) {
+            this.el = el;
+            this.original = el.textContent.trim();
+            this.queue = [];
+            this.frame = 0;
+            this.frameRequest = null;
+            this.isBusy = false;
+        }
+        scramble() {
+            if (this.isBusy) return;
+            this.isBusy = true;
+            const oldText = this.original;
+            const length = oldText.length;
+            this.queue = [];
+            for (let i = 0; i < length; i++) {
+                const from = scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+                const start = Math.floor(Math.random() * 8);
+                const end = start + Math.floor(Math.random() * 12 + 8);
+                this.queue.push({ from, to: oldText[i], start, end });
+            }
+            cancelAnimationFrame(this.frameRequest);
+            this.frame = 0;
+            this.update();
+        }
+        update() {
+            let output = '';
+            let complete = 0;
+            for (let i = 0; i < this.queue.length; i++) {
+                let { from, to, start, end } = this.queue[i];
+                if (this.frame >= end || to === ' ' || to === '\n') {
+                    complete++;
+                    output += to;
+                } else if (this.frame >= start) {
+                    if (Math.random() < 0.22) {
+                        this.queue[i].from = scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+                    }
+                    output += `<span style="color:var(--lime);font-weight:bold">${this.queue[i].from}</span>`;
+                } else {
+                    output += to;
+                }
+            }
+            this.el.innerHTML = output;
+            if (complete < this.queue.length) {
+                this.frameRequest = requestAnimationFrame(() => this.update());
+                this.frame++;
+            } else {
+                this.el.textContent = this.original;
+                setTimeout(() => { this.isBusy = false; }, 400);
+            }
+        }
+    }
+
+    // Apply scramble glitch ONLY to "OFF THE SCREEN & IN THE ZONE" (.vibing-title)
+    document.querySelectorAll('.vibing-title').forEach(title => {
+        const scrambler = new TextScramble(title);
+        title.addEventListener('mouseenter', () => scrambler.scramble());
+    });
+
+
+    // ============ CURSOR TRAIL ============
+    if (window.matchMedia('(pointer: fine)').matches) {
+        const TRAIL_COUNT = 8;
+        const trailDots = [];
+        for (let i = 0; i < TRAIL_COUNT; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('cursor-trail-dot');
+            dot.style.width = `${6 - i * 0.5}px`;
+            dot.style.height = `${6 - i * 0.5}px`;
+            document.body.appendChild(dot);
+            trailDots.push({ el: dot, x: 0, y: 0 });
+        }
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            trailDots.forEach(d => d.el.style.opacity = '0.5');
+        });
+
+        const animateTrail = () => {
+            let px = mouseX, py = mouseY;
+            trailDots.forEach((dot, i) => {
+                const speed = 0.25 - i * 0.02;
+                dot.x += (px - dot.x) * speed;
+                dot.y += (py - dot.y) * speed;
+                dot.el.style.transform = `translate(${dot.x - 3}px, ${dot.y - 3}px)`;
+                px = dot.x;
+                py = dot.y;
             });
-        }, { passive: true });
+            requestAnimationFrame(animateTrail);
+        };
+        animateTrail();
+
+        // Fade out when idle
+        let idleTimer;
+        document.addEventListener('mousemove', () => {
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(() => {
+                trailDots.forEach(d => d.el.style.opacity = '0');
+            }, 2000);
+        });
     }
 
 
-    // ============ TYPING EFFECT FOR HERO GREETING (optional subtle touch) ============
-    // Not implementing a full typewriter to keep things smooth,
-    // but the CSS reveal-up animation handles the entrance nicely.
+    // ============ HOBBY PORTFOLIO MODAL ============
+    const hobbyModal = document.getElementById('hobbyModal');
+    const hobbyModalContent = document.getElementById('hobbyModalContent');
+    const hobbyModalClose = document.getElementById('hobbyModalClose');
 
+    const hobbyData = {
+        guitar: {
+            badge: "🎸 Playing Guitar",
+            title: "GUITAR & RIFFS",
+            image: "img/hobby_guitar.png",
+            desc: "Writing acoustic fingerstyle arrangements, lead guitar solos, and ambient guitar loops. Music is my primary creative outlet outside of programming.",
+            tags: ["Acoustic Fingerstyle", "Electric Lead", "Music Production", "Improv & Riffs"]
+        },
+        content: {
+            badge: "🎙️ Content Creating",
+            title: "SONG COVERS & MEDIA",
+            image: "img/hobby_content.png",
+            desc: "Arranging and recording acoustic song covers / handling everything from vocal tracks and DAW mixing (Logic / Ableton) to video editing and color grading.",
+            tags: ["Song Cover Production", "Vocal & DAW Mixing", "Video Editing", "Audio Mastering"]
+        },
+        photo: {
+            badge: "📸 Photography",
+            title: "VISUAL PHOTOGRAPHY",
+            image: "img/hobby_photo.png",
+            desc: "Exploring visual composition through street photography, architectural framing, and mood color-grading. A passion that directly feeds into my UI/UX design taste.",
+            tags: ["Street Photography", "Architectural Shots", "Color Grading", "Visual Storytelling"]
+        },
+        design: {
+            badge: "🎨 Graphic Design",
+            title: "BRAND & VISUAL SYSTEMS",
+            image: "img/hobby_content.png",
+            desc: "Crafting bold brand identities, design systems, visual layouts, and digital graphics. Combining typography, color theory, and modern aesthetics.",
+            tags: ["Brand Identity", "Design Systems", "Visual Layouts", "Typography & Color"]
+        }
+    };
 
-    // ============ CONSOLE EASTER EGG ============
-    console.log(
-        '%c👋 hey! curious soul, huh?',
-        'color: #4361EE; font-size: 18px; font-weight: bold; font-family: "Space Grotesk", sans-serif;'
-    );
-    console.log(
-        '%cthis portfolio was crafted with love, caffeine, and probably some questionable CSS decisions.',
-        'color: #64748B; font-size: 13px; font-family: "Inter", sans-serif;'
-    );
-    console.log(
-        '%c→ wanna collab? hit me up at dionaditya59@gmail.com ✨',
-        'color: #4361EE; font-size: 13px; font-family: "Inter", sans-serif;'
-    );
+    const openHobbyModal = (hobbyKey) => {
+        const data = hobbyData[hobbyKey];
+        if (!data) return;
+
+        hobbyModalContent.innerHTML = `
+            <div class="modal-header-badge">${data.badge}</div>
+            <h3 class="modal-title">${data.title}</h3>
+            <div class="modal-image-wrap">
+                <img src="${data.image}" alt="${data.title}" class="modal-image">
+            </div>
+            <p class="modal-desc">${data.desc}</p>
+            <div class="modal-tags">
+                ${data.tags.map(t => `<span class="modal-tag">${t}</span>`).join('')}
+            </div>
+        `;
+
+        hobbyModal.classList.add('active');
+        hobbyModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (window.playSound) window.playSound('click');
+    };
+
+    const closeHobbyModal = () => {
+        hobbyModal.classList.remove('active');
+        hobbyModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.hobby-click-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const hobby = item.getAttribute('data-hobby');
+            openHobbyModal(hobby);
+        });
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const hobby = item.getAttribute('data-hobby');
+                openHobbyModal(hobby);
+            }
+        });
+    });
+
+    hobbyModalClose?.addEventListener('click', closeHobbyModal);
+
+    hobbyModal?.addEventListener('click', (e) => {
+        if (e.target === hobbyModal) closeHobbyModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && hobbyModal?.classList.contains('active')) {
+            closeHobbyModal();
+        }
+    });
 
 });
+
+
+// ============ SKILL PILL ANIMATION KEYFRAMES ============
+const styleTag = document.createElement('style');
+styleTag.textContent = `
+    .skill-pill.pill-animate {
+        animation: pillPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    @keyframes pillPop {
+        from { opacity: 0; transform: scale(0.6) translateY(10px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+`;
+document.head.appendChild(styleTag);
+
