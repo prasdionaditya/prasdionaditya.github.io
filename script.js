@@ -393,35 +393,21 @@ document.addEventListener('DOMContentLoaded', () => {
     syncLastFm();
 
 
-    // ============ CONTACT FORM (WEB3FORMS) ============
-    const contactForm = document.getElementById('contactForm');
-    const formSubmitBtn = document.getElementById('formSubmitBtn');
-    const formSuccess = document.getElementById('formSuccess');
+    // ============ SAY HI OPTIONS TOGGLE ============
+    const sayHiBtn = document.getElementById('sayHiBtn');
+    const sayHiOptions = document.getElementById('sayHiOptions');
 
-    contactForm?.addEventListener('submit', async (e) => {
+    sayHiBtn?.addEventListener('click', (e) => {
         e.preventDefault();
-        const submitLabel = formSubmitBtn.querySelector('.submit-label');
-        const submitLoading = formSubmitBtn.querySelector('.submit-loading');
-        submitLabel.style.display = 'none';
-        submitLoading.style.display = 'inline';
-        formSubmitBtn.disabled = true;
-
-        try {
-            const formData = new FormData(contactForm);
-            const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-            const data = await res.json();
-            if (data.success) {
-                contactForm.style.display = 'none';
-                formSuccess.style.display = 'flex';
-                playSound('success');
-            } else {
-                throw new Error(data.message || 'Submission failed');
-            }
-        } catch (err) {
-            submitLabel.style.display = 'inline';
-            submitLoading.style.display = 'none';
-            formSubmitBtn.disabled = false;
-            showToast('oops! something went wrong 😅');
+        const isExpanded = sayHiBtn.getAttribute('aria-expanded') === 'true';
+        
+        if (isExpanded) {
+            sayHiOptions.style.display = 'none';
+            sayHiBtn.setAttribute('aria-expanded', 'false');
+        } else {
+            sayHiOptions.style.display = 'flex';
+            sayHiBtn.setAttribute('aria-expanded', 'true');
+            if (window.playSound) window.playSound('click');
         }
     });
 

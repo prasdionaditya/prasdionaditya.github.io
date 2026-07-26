@@ -655,10 +655,17 @@ body.loaded .reveal-up { opacity: 1; transform: translateY(0); }
     background: var(--off-white);
 }
 
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 48px;
+    align-items: start;
+}
+
 .skills-two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 24px;
 }
 
 .skill-block {
@@ -690,6 +697,7 @@ body.loaded .reveal-up { opacity: 1; transform: translateY(0); }
     display: flex; flex-wrap: wrap; gap: 10px;
 }
 .skill-pill {
+    position: relative;
     padding: 7px 15px;
     background: var(--off-white);
     border: 1px solid rgba(30, 69, 251, 0.15);
@@ -697,14 +705,68 @@ body.loaded .reveal-up { opacity: 1; transform: translateY(0); }
     border-radius: var(--r-full);
     font-size: 0.85rem;
     font-weight: 600;
+    cursor: pointer;
     transition: all 0.2s ease;
 }
+
 .skill-pill:hover {
     background: var(--blue);
     color: var(--white);
     border-color: var(--blue);
     transform: translateY(-2px) scale(1.04);
     box-shadow: 0 4px 16px rgba(30, 69, 251, 0.3);
+}
+
+/* Custom Skill Pill Floating Tooltips */
+.skill-pill[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    padding: 8px 14px;
+    background: var(--black);
+    color: var(--lime);
+    border: 1.5px solid var(--lime);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+    text-align: center;
+    width: max-content;
+    max-width: 210px;
+    white-space: normal;
+    word-break: break-word;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.22s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 10000;
+}
+
+.skill-pill[data-tooltip]::after {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: var(--lime) transparent transparent transparent;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.22s ease;
+    z-index: 1000;
+}
+
+.skill-pill[data-tooltip]:hover::before,
+.skill-pill[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 
 
@@ -872,9 +934,64 @@ body.loaded .reveal-up { opacity: 1; transform: translateY(0); }
 }
 
 .contact-cta-group {
-    display: flex; align-items: center; gap: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     margin-bottom: 48px;
     flex-wrap: wrap;
+}
+
+.say-hi-trigger {
+    cursor: pointer;
+    user-select: none;
+}
+
+.say-hi-options {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9) translateX(-10px); }
+    to   { opacity: 1; transform: scale(1) translateX(0); }
+}
+
+.say-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    background: var(--white);
+    border: 2px solid var(--blue);
+    border-radius: var(--r-full);
+    color: var(--blue);
+    font-weight: 800;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all var(--t-fast);
+    box-shadow: 0 4px 16px rgba(30, 69, 251, 0.12);
+}
+
+.say-option:hover {
+    background: var(--blue);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(30, 69, 251, 0.22);
+}
+
+.option-wa {
+    border-color: #25D366;
+    color: #128C7E;
+}
+
+.option-wa:hover {
+    background: #25D366;
+    color: #fff;
+    border-color: #25D366;
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.35);
 }
 
 .btn-large { padding: 16px 38px; font-size: 1.1rem; }
