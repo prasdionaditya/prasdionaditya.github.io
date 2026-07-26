@@ -742,6 +742,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ============ HERO ABILITY ANIMATED STAGGERED SWITCHER ============
+    const heroAbilityBox = document.getElementById('heroAbilityBox');
+    const heroAbilityWord = document.getElementById('heroAbilityWord');
+
+    if (heroAbilityBox && heroAbilityWord) {
+        const abilities = ["WEB DEVELOPER", "GRAPHIC DESIGNER", "CONTENT CREATOR"];
+        let currentIdx = 0;
+
+        const renderLetters = (text) => {
+            heroAbilityWord.innerHTML = '';
+            let charIndex = 0;
+            [...text].forEach((char) => {
+                const span = document.createElement('span');
+                if (char === ' ') {
+                    span.className = 'hero-ability-char space';
+                    span.innerHTML = '&nbsp;';
+                } else {
+                    span.className = 'hero-ability-char';
+                    span.textContent = char;
+                }
+                span.style.setProperty('--char-idx', charIndex);
+                heroAbilityWord.appendChild(span);
+                charIndex++;
+            });
+        };
+
+        // Render initial word
+        renderLetters(abilities[currentIdx]);
+        heroAbilityBox.classList.add('is-active');
+
+        setInterval(() => {
+            // Step 1: Exit - each letter slides UP staggered
+            heroAbilityBox.classList.remove('is-active', 'is-entering');
+            heroAbilityBox.classList.add('is-exiting');
+
+            const currentLength = abilities[currentIdx].length;
+            const exitTime = 400 + (currentLength * 32);
+
+            setTimeout(() => {
+                // Step 2: Swap word and prepare enter state from below (+130%)
+                currentIdx = (currentIdx + 1) % abilities.length;
+                renderLetters(abilities[currentIdx]);
+                
+                heroAbilityBox.classList.remove('is-exiting');
+                heroAbilityBox.classList.add('is-entering');
+                
+                // Force DOM reflow to apply is-entering without transition
+                void heroAbilityBox.offsetWidth;
+
+                // Step 3: Trigger enter animation (letters slide UP from below into view)
+                heroAbilityBox.classList.remove('is-entering');
+                heroAbilityBox.classList.add('is-active');
+            }, exitTime);
+        }, 3200);
+    }
+
 });
 
 

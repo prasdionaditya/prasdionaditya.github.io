@@ -58,7 +58,7 @@
             <a href="#about" class="nav-link">about</a>
             <a href="#skills" class="nav-link">skills</a>
             <a href="#work" class="nav-link">work</a>
-            <a href="#contact" class="nav-link nav-cta">let's talk</a>
+            <a href="#contact" class="nav-link nav-cta">hit me up!</a>
         </div>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
             <span></span>
@@ -89,13 +89,15 @@
         <div class="hero-grid"></div>
 
         <div class="hero-inner">
-            <!-- Left: Big bold text -->
+            <!-- Centered: Big bold text -->
             <div class="hero-text-block">
                 <p class="hero-tag reveal-up" style="--delay:0.1s">hey, i'm dion 👋</p>
                 <h1 class="hero-headline reveal-up" style="--delay:0.2s">
-                    <span class="line-1">WEB DEV</span>
-                    <span class="line-2 lime-text">&amp; GRAPHIC</span>
-                    <span class="line-3">DESIGNER</span>
+                    <div class="hero-ability-box is-active" id="heroAbilityBox">
+                        <div class="hero-ability-word" id="heroAbilityWord">
+                            <!-- Letters rendered dynamically by JS -->
+                        </div>
+                    </div>
                 </h1>
                 <p class="hero-sub reveal-up" style="--delay:0.4s">
                     i turn caffeine into code &amp; raw ideas into pixels that <em>slap</em>.
@@ -105,36 +107,6 @@
                     <a href="#work" class="btn-lime snd-click" id="heroCtaPrimary">see my work ↗</a>
                     <a href="cv.pdf" class="btn-ghost snd-click" id="heroCvBtn" download>see cv 📄</a>
                     <a href="#contact" class="btn-ghost snd-click" id="heroCtaSecondary">get in touch</a>
-                </div>
-            </div>
-
-            <!-- Right: Circular open-to-work badge -->
-            <div class="hero-badge-area reveal-up" style="--delay:0.35s">
-                <div class="otw-wrapper">
-                    <div class="otw-ring" id="otwRing">
-                        <svg viewBox="0 0 200 200" class="otw-svg">
-                            <defs>
-                                <path id="circlePath" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
-                            </defs>
-                            <text class="otw-text">
-                                <textPath href="#circlePath" startOffset="0%">
-                                    ✦ OPEN TO WORK ✦ OPEN TO WORK ✦ OPEN TO WORK ✦ OPEN TO WORK
-                                </textPath>
-                            </text>
-                        </svg>
-                        <div class="otw-face">
-                            <img src="img/dion.png" alt="Dion | Open to Work" class="otw-photo">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hero-chip chip-1 reveal-up" style="--delay:0.6s">
-                    <span class="chip-num">3+</span>
-                    <span class="chip-label">yrs xp</span>
-                </div>
-                <div class="hero-chip chip-2 reveal-up" style="--delay:0.7s">
-                    <span class="chip-num">20+</span>
-                    <span class="chip-label">projects</span>
                 </div>
             </div>
         </div>
@@ -395,7 +367,7 @@
                 <!-- Project 1 — Switchy (screenshot) -->
                 <article class="project-card scroll-reveal" id="project1">
                     <div class="project-visual project-img-1">
-                        <img src="img/switchy.jpg" alt="Switchy — Local & Private Media Converter"
+                        <img src="img/switchy.jpg" alt="Switchy — Media Converter"
                             class="project-screenshot">
                         <span class="project-type-tag">Full-Stack ⚡</span>
                     </div>
@@ -434,7 +406,7 @@
                         <span class="project-type-tag">AI Platform 🧠</span>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-name">BrainWave</h3>
+                        <h3 class="project-name">SiPaling Paham</h3>
                         <p class="project-desc">AI-powered learning platform with dynamic study paths &amp; adaptive
                             quiz engines.</p>
                         <div class="project-tags">
@@ -527,77 +499,110 @@
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="contact-inner scroll-reveal">
-                <p class="contact-eyebrow">04 / what's next?</p>
-                <h2 class="contact-big-title">
-                    LET'S BUILD<br>
-                    SOMETHING<br>
-                    <span class="lime-text">WILD!</span>
-                </h2>
-                <p class="contact-desc">
-                    got a project? a collab idea? or just wanna say hi?<br>
-                    worst i can say is <strong><em style="color: #1E45FB;">gasss!</em></strong> 🚀
-                </p>
+            <div class="contact-grid scroll-reveal">
+                <!-- Left: Contact Details -->
+                <div class="contact-info-col">
+                    <p class="contact-eyebrow">04 / what's next?</p>
+                    <h2 class="contact-big-title">
+                        LET'S BUILD<br>
+                        SOMETHING<br>
+                        <span class="lime-text">WILD!</span>
+                    </h2>
+                    <p class="contact-desc">
+                        got a project? a collab idea? or just wanna say hi?<br>
+                        worst i can say is <strong><em style="color: #1E45FB;">gasss!</em></strong> 🚀
+                    </p>
 
-                <div class="contact-cta-group">
-                    <button class="btn-lime btn-large say-hi-trigger snd-click" id="sayHiBtn" aria-expanded="false">
-                        <span class="say-hi-label">say hi ↗</span>
-                    </button>
-                    
-                    <div class="say-hi-options" id="sayHiOptions" style="display: none;">
-                        <a href="https://wa.me/6281240843530?text=Hi%20Dion!%20Saw%20your%20portfolio..." target="_blank" rel="noopener" class="say-option option-wa snd-click" id="waOptionBtn">
-                            <span class="opt-icon">💬</span>
-                            <span class="opt-text">WhatsApp</span>
-                            <span class="opt-arrow">↗</span>
+                    <div class="contact-cta-group">
+                        <button class="btn-lime btn-large say-hi-trigger snd-click" id="sayHiBtn" aria-expanded="false">
+                            <span class="say-hi-label">say hi ↗</span>
+                        </button>
+                        
+                        <div class="say-hi-options" id="sayHiOptions" style="display: none;">
+                            <a href="https://wa.me/6281240843530?text=Hi%20Dion!%20Saw%20your%20portfolio..." target="_blank" rel="noopener" class="say-option option-wa snd-click" id="waOptionBtn">
+                                <span class="opt-icon">💬</span>
+                                <span class="opt-text">WhatsApp</span>
+                                <span class="opt-arrow">↗</span>
+                            </a>
+                            <a href="mailto:dionaditya59@gmail.com?subject=Hi%20Dion!" class="say-option option-email snd-click" id="emailOptionBtn">
+                                <span class="opt-icon">✉️</span>
+                                <span class="opt-text">Email</span>
+                                <span class="opt-arrow">↗</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener" class="social-link"
+                            aria-label="Instagram" id="socialInstagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                            <span>instagram</span>
                         </a>
-                        <a href="mailto:dionaditya59@gmail.com?subject=Hi%20Dion!" class="say-option option-email snd-click" id="emailOptionBtn">
-                            <span class="opt-icon">✉️</span>
-                            <span class="opt-text">Email</span>
-                            <span class="opt-arrow">↗</span>
+                        <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener" class="social-link"
+                            aria-label="LinkedIn" id="socialLinkedin">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                            <span>linkedin</span>
+                        </a>
+                        <a href="https://youtube.com/@prasdionaditya" target="_blank" rel="noopener" class="social-link"
+                            aria-label="YouTube" id="socialYoutube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z" />
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                            </svg>
+                            <span>youtube</span>
+                        </a>
+                        <a href="https://twitter.com/prasdionaditya" target="_blank" rel="noopener" class="social-link"
+                            aria-label="Twitter / X" id="socialTwitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                            </svg>
+                            <span>twitter / x</span>
                         </a>
                     </div>
                 </div>
 
-                <div class="social-links">
-                    <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener" class="social-link"
-                        aria-label="Instagram" id="socialInstagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                        </svg>
-                        <span>instagram</span>
-                    </a>
-                    <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener" class="social-link"
-                        aria-label="LinkedIn" id="socialLinkedin">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                            <rect x="2" y="9" width="4" height="12" />
-                            <circle cx="4" cy="4" r="2" />
-                        </svg>
-                        <span>linkedin</span>
-                    </a>
-                    <a href="https://youtube.com/@prasdionaditya" target="_blank" rel="noopener" class="social-link"
-                        aria-label="YouTube" id="socialYoutube">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z" />
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-                        </svg>
-                        <span>youtube</span>
-                    </a>
-                    <a href="https://twitter.com/prasdionaditya" target="_blank" rel="noopener" class="social-link"
-                        aria-label="Twitter / X" id="socialTwitter">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-                        </svg>
-                        <span>twitter / x</span>
-                    </a>
+                <!-- Right: Large Open To Work Badge Column -->
+                <div class="contact-badge-col">
+                    <div class="otw-wrapper otw-large">
+                        <div class="otw-ring" id="otwRing">
+                            <svg viewBox="0 0 200 200" class="otw-svg">
+                                <defs>
+                                    <path id="circlePath" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+                                </defs>
+                                <text class="otw-text">
+                                    <textPath href="#circlePath" startOffset="0%">
+                                        ✦ OPEN TO WORK ✦ OPEN TO WORK ✦ OPEN TO WORK 
+                                    </textPath>
+                                </text>
+                            </svg>
+                            <div class="otw-face">
+                                <img src="img/dion.png" alt="Dion | Open to Work" class="otw-photo">
+                            </div>
+                        </div>
+
+                        <div class="hero-chip chip-1">
+                            <span class="chip-num">3+</span>
+                            <span class="chip-label">yrs xp</span>
+                        </div>
+                        <div class="hero-chip chip-2">
+                            <span class="chip-num">5+</span>
+                            <span class="chip-label">projects</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
