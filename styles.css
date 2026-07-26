@@ -335,6 +335,43 @@ body.loaded .reveal-up { opacity: 1; transform: translateY(0); }
     pointer-events: none;
 }
 
+/* Section relative positioning for background overlays */
+#hero, #about, #skills, #work, #contact, footer {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Doodle pattern overlay — Light sections (#about, #skills, #work) */
+.section-doodle-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/doodle-overlay.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    opacity: 0.08;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Doodle pattern overlay — Dark / Accent sections (#hero, #contact, footer) */
+.hero-doodle-overlay,
+.contact-doodle-overlay,
+.footer-doodle-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/doodle-overlay.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    filter: invert(1);
+    opacity: 0.25;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 0;
+}
+
 .hero-inner {
     max-width: 1000px;
     margin: 0 auto;
