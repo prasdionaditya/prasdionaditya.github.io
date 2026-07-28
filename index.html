@@ -25,9 +25,20 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap">
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
+    <script>
+        if ('fonts' in document) {
+            document.fonts.ready.then(function () {
+                document.documentElement.classList.add('fonts-loaded');
+            });
+        } else {
+            document.documentElement.classList.add('fonts-loaded');
+        }
+    </script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -53,7 +64,9 @@
 
     <!-- ============ NAVBAR ============ -->
     <nav id="navbar">
-        <a href="#" class="nav-logo">dion<span class="logo-dot">.</span></a>
+        <a href="#" class="nav-logo" aria-label="Dion Home">
+            <img src="img/logo.png" alt="Logo" class="nav-logo-img">
+        </a>
         <div class="nav-links" id="navLinks">
             <a href="#about" class="nav-link">about</a>
             <a href="#skills" class="nav-link">skills</a>
@@ -106,7 +119,8 @@
                 </p>
                 <div class="hero-btns reveal-up" style="--delay:0.55s">
                     <a href="#work" class="btn-lime snd-click" id="heroCtaPrimary">see my work ↗</a>
-                    <a href="cv.pdf" class="btn-ghost snd-click" id="heroCvBtn" download="Muhammad_Aksal_Prasdion_Aditya_CV.pdf" target="_blank">see cv 📄</a>
+                    <a href="cv.pdf" class="btn-ghost snd-click" id="heroCvBtn"
+                        download="Muhammad_Aksal_Prasdion_Aditya_CV.pdf" target="_blank">see cv 📄</a>
                     <a href="#contact" class="btn-ghost snd-click" id="heroCtaSecondary">get in touch</a>
                 </div>
             </div>
@@ -155,10 +169,14 @@
                 </div>
                 <div class="about-body-col scroll-reveal">
                     <p class="about-lead">
-                        i'm <strong>Dion</strong> (Muhammad Aksal Prasdion Aditya) | web developer &amp; graphic designer building for both <span class="lime-text fw-bold">functionality</span> and <span class="lime-text fw-bold">clean aesthetics</span>.
+                        i'm <strong>Dion</strong> (Muhammad Aksal Prasdion Aditya) | web developer &amp; graphic
+                        designer building for both <span class="lime-text fw-bold">functionality</span> and <span
+                            class="lime-text fw-bold">clean aesthetics</span>.
                     </p>
                     <p class="about-body">
-                        I don't just write code, I build fast web apps and design visual identities that actually look sick. Whether I'm crafting React interfaces or tuning responsive layouts, I keep everything clean, fast, and pixel-perfect.
+                        I don't just write code, I build fast web apps and design visual identities that actually look
+                        sick. Whether I'm crafting React interfaces or tuning responsive layouts, I keep everything
+                        clean, fast, and pixel-perfect.
                     </p>
                     <div class="about-tags">
                         <span class="about-tag snd-hover">🎨 Graphic Design</span>
@@ -171,110 +189,133 @@
                 </div>
             </div>
 
-            <!-- Hobbies & Interests -->
+            <!-- Hobbies & Interests (Seamlessly Integrated inside #about) -->
             <div class="vibing-wrap scroll-reveal">
                 <div class="vibing-header">
                     <span class="vibing-badge">CURRENTLY VIBING ⚡</span>
                     <h3 class="vibing-title">HOBBIES N INTERESTS</h3>
                 </div>
-                <div class="vibing-grid">
-                    <!-- Spotify / Music Card (Matching Letterboxd format) -->
-                    <div class="vibing-card music-card snd-hover">
-                        <div class="vibing-card-top">
-                            <div class="vibing-badge-pill">
-                                <span class="vibing-icon">🎵</span>
-                                <span class="vibing-tag">ON REPEAT</span>
+
+                <!-- Sub-section 1: Media & Entertainment -->
+                <div class="vibing-subsection">
+                    <h4 class="vibing-sub-title"><span>01</span> Media &amp; Entertainment</h4>
+                    <div class="vibing-grid vibing-grid-media">
+                        <!-- Spotify / Music Card -->
+                        <div class="vibing-card music-card snd-hover">
+                            <div class="vibing-card-top">
+                                <div class="vibing-badge-pill">
+                                    <span class="vibing-icon">🎵</span>
+                                    <span class="vibing-tag">ON REPEAT</span>
+                                </div>
+                                <span class="music-handle"
+                                    style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">Most
+                                    Listened This Month</span>
                             </div>
-                            <span class="music-handle" style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">Most Listened This Month</span>
+                            <div class="vibing-body">
+                                <img src="img/cortis_redred.png" alt="REDRED — CORTIS Album Cover"
+                                    class="vibing-poster music-poster">
+                                <div class="vibing-content">
+                                    <h4 class="vibing-track">REDRED</h4>
+                                    <p class="vibing-artist">CORTIS • Top Track</p>
+                                    <a href="https://open.spotify.com/user/31xl4dkmwqq6nwcu4isdaotls6rm" target="_blank"
+                                        rel="noopener" class="vibing-link snd-click" id="spotifyTrackBtn">
+                                        <span>see my taste in music</span> ↗
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="vibing-body">
-                            <img src="img/cortis_redred.png" alt="REDRED — CORTIS Album Cover" class="vibing-poster music-poster">
-                            <div class="vibing-content">
-                                <h4 class="vibing-track">REDRED</h4>
-                                <p class="vibing-artist">CORTIS • Top Track</p>
-                                <a href="https://open.spotify.com/user/31xl4dkmwqq6nwcu4isdaotls6rm" target="_blank" rel="noopener"
-                                    class="vibing-link snd-click" id="spotifyTrackBtn">
-                                    <span>see my taste in music</span> ↗
-                                </a>
+
+                        <!-- Fav Movie Card (Real Letterboxd Poster) -->
+                        <div class="vibing-card movie-card snd-hover">
+                            <div class="vibing-card-top">
+                                <div class="vibing-badge-pill">
+                                    <span class="vibing-icon">🎬</span>
+                                    <span class="vibing-tag">#1 Fav Movie</span>
+                                </div>
+                                <span class="letterboxd-handle"
+                                    style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@dionicious</span>
+                            </div>
+                            <div class="vibing-body">
+                                <img src="https://i.pinimg.com/1200x/2a/e6/95/2ae695f614daae6926efe0d1efbddf01.jpg" alt="Dune Movie Poster" class="vibing-poster">
+                                <div class="vibing-content">
+                                    <h4 class="vibing-track">Dune</h4>
+                                    <p class="vibing-artist">254 films logged • ★★★★★</p>
+                                    <a href="https://letterboxd.com/dionicious/" target="_blank" rel="noopener"
+                                        class="vibing-link snd-click" id="letterboxdProfileBtn">
+                                        <span>view letterboxd profile</span> ↗
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Fav Movie Card -->
-                    <div class="vibing-card movie-card snd-hover">
-                        <div class="vibing-card-top">
-                            <div class="vibing-badge-pill">
-                                <span class="vibing-icon">🎬</span>
-                                <span class="vibing-tag">Fav Movie</span>
+                <!-- Sub-section 2: Creative & Crafts -->
+                <div class="vibing-subsection">
+                    <h4 class="vibing-sub-title"><span>02</span> Creative &amp; Crafts</h4>
+                    <div class="vibing-grid vibing-grid-creative">
+                        <!-- Photography Card (Integrated with Instagram @takenbydion) -->
+                        <a href="https://instagram.com/takenbydion" target="_blank" rel="noopener"
+                            class="vibing-card hobby-single-card snd-hover snd-click" style="text-decoration: none;">
+                            <div class="vibing-card-top">
+                                <div class="vibing-badge-pill">
+                                    <span class="vibing-icon">📸</span>
+                                    <span class="vibing-tag">Photography</span>
+                                </div>
+                                <span class="instagram-handle"
+                                    style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@takenbydion</span>
                             </div>
-                            <span class="letterboxd-handle" style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@dionicious</span>
-                        </div>
-                        <div class="vibing-body">
-                            <img src="img/dune.png" alt="Dune Movie Poster" class="vibing-poster">
-                            <div class="vibing-content">
-                                <h4 class="vibing-track">Dune</h4>
-                                <p class="vibing-artist">254 films logged • ★★★★★</p>
-                                <a href="https://letterboxd.com/dionicious/" target="_blank" rel="noopener"
-                                    class="vibing-link snd-click" id="letterboxdProfileBtn">
-                                    <span>view letterboxd profile</span> ↗
-                                </a>
+                            <div class="vibing-body">
+                                <img src="img/hobby_photo.png" alt="Photography" class="vibing-poster hobby-card-thumb">
+                                <div class="vibing-content">
+                                    <h4 class="vibing-track">Photography</h4>
+                                    <p class="vibing-artist">Street aesthetics &amp; color grading</p>
+                                    <span class="vibing-link">view instagram ↗</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </a>
 
-                    <!-- Photography Card (Individual) -->
-                    <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="photo" role="button" tabindex="0">
-                        <div class="vibing-card-top">
-                            <div class="vibing-badge-pill">
-                                <span class="vibing-icon">📸</span>
-                                <span class="vibing-tag">Photography</span>
+                        <!-- Graphic Design Card -->
+                        <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="design" role="button"
+                            tabindex="0">
+                            <div class="vibing-card-top">
+                                <div class="vibing-badge-pill">
+                                    <span class="vibing-icon">🎨</span>
+                                    <span class="vibing-tag">Graphic Design</span>
+                                </div>
+                                <span class="hobby-arrow"
+                                    style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
                             </div>
-                            <span class="hobby-arrow" style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
-                        </div>
-                        <div class="vibing-body">
-                            <img src="img/hobby_photo.png" alt="Photography" class="vibing-poster hobby-card-thumb">
-                            <div class="vibing-content">
-                                <h4 class="vibing-track">Photography</h4>
-                                <p class="vibing-artist">Street aesthetics &amp; color grading</p>
-                                <span class="vibing-link">view gallery ↗</span>
+                            <div class="vibing-body">
+                                <img src="img/hobby_content.png" alt="Graphic Design"
+                                    class="vibing-poster hobby-card-thumb">
+                                <div class="vibing-content">
+                                    <h4 class="vibing-track">Graphic Design</h4>
+                                    <p class="vibing-artist">Visual identity &amp; brand systems</p>
+                                    <span class="vibing-link">view showcase ↗</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Graphic Design Card (Individual) -->
-                    <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="design" role="button" tabindex="0">
-                        <div class="vibing-card-top">
-                            <div class="vibing-badge-pill">
-                                <span class="vibing-icon">🎨</span>
-                                <span class="vibing-tag">Graphic Design</span>
+                        <!-- Content Creating Card -->
+                        <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="content"
+                            role="button" tabindex="0">
+                            <div class="vibing-card-top">
+                                <div class="vibing-badge-pill">
+                                    <span class="vibing-icon">🎙️</span>
+                                    <span class="vibing-tag">Content Creating</span>
+                                </div>
+                                <span class="hobby-arrow"
+                                    style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
                             </div>
-                            <span class="hobby-arrow" style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
-                        </div>
-                        <div class="vibing-body">
-                            <img src="img/hobby_content.png" alt="Graphic Design" class="vibing-poster hobby-card-thumb">
-                            <div class="vibing-content">
-                                <h4 class="vibing-track">Graphic Design</h4>
-                                <p class="vibing-artist">Visual identity &amp; brand systems</p>
-                                <span class="vibing-link">view showcase ↗</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Creating Card (Individual) -->
-                    <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="content" role="button" tabindex="0">
-                        <div class="vibing-card-top">
-                            <div class="vibing-badge-pill">
-                                <span class="vibing-icon">🎙️</span>
-                                <span class="vibing-tag">Content Creating</span>
-                            </div>
-                            <span class="hobby-arrow" style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
-                        </div>
-                        <div class="vibing-body">
-                            <img src="img/hobby_content.png" alt="Content Creating" class="vibing-poster hobby-card-thumb">
-                            <div class="vibing-content">
-                                <h4 class="vibing-track">Content Creating</h4>
-                                <p class="vibing-artist">Song covers &amp; video edits</p>
-                                <span class="vibing-link">view media ↗</span>
+                            <div class="vibing-body">
+                                <img src="img/hobby_content.png" alt="Content Creating"
+                                    class="vibing-poster hobby-card-thumb">
+                                <div class="vibing-content">
+                                    <h4 class="vibing-track">Content Creating</h4>
+                                    <p class="vibing-artist">Song covers &amp; video edits</p>
+                                    <span class="vibing-link">view media ↗</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -308,18 +349,34 @@
                             <h3 class="skill-block-title">Development &amp; Engineering</h3>
                         </div>
                         <div class="skill-pills">
-                            <span class="skill-pill snd-hover" data-tooltip="Semantic HTML5 structure &amp; modern CSS3 animations">HTML5 / CSS3</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Modern ES6+ syntax, async/await &amp; DOM manipulation">JavaScript (ES6+)</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Type-safe codebases &amp; scalable architecture">TypeScript</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Component-driven UIs, custom hooks &amp; state management">React.js</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Server-side rendering, App Router &amp; SEO optimization">Next.js</span>
-                            <span class="skill-pill snd-hover" data-tooltip="RESTful backend services &amp; asynchronous I/O">Node.js</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Data automation, scripting &amp; backend logic">Python</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Designing &amp; consuming JSON REST APIs">RESTful APIs</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Version control, branching &amp; collaboration workflows">Git / GitHub</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Utility-first styling &amp; rapid responsive UI design">Tailwind CSS</span>
-                            <span class="skill-pill snd-hover" data-tooltip="In-browser high-performance computing &amp; WebAssembly">WebAssembly</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Database schema design with PostgreSQL &amp; MongoDB">SQL &amp; NoSQL</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Semantic HTML5 structure &amp; modern CSS3 animations">HTML5 / CSS3</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Modern ES6+ syntax, async/await &amp; DOM manipulation">JavaScript
+                                (ES6+)</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Type-safe codebases &amp; scalable architecture">TypeScript</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Component-driven UIs, custom hooks &amp; state management">React.js</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Server-side rendering, App Router &amp; SEO optimization">Next.js</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="RESTful backend services &amp; asynchronous I/O">Node.js</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Data automation, scripting &amp; backend logic">Python</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Designing &amp; consuming JSON REST APIs">RESTful APIs</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Version control, branching &amp; collaboration workflows">Git /
+                                GitHub</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Utility-first styling &amp; rapid responsive UI design">Tailwind
+                                CSS</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="In-browser high-performance computing &amp; WebAssembly">WebAssembly</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Database schema design with PostgreSQL &amp; MongoDB">SQL &amp;
+                                NoSQL</span>
                         </div>
                     </div>
 
@@ -329,18 +386,36 @@
                             <h3 class="skill-block-title">Design &amp; Creative</h3>
                         </div>
                         <div class="skill-pills">
-                            <span class="skill-pill snd-hover" data-tooltip="Interactive prototypes, auto-layout &amp; design systems">Figma (UI/UX)</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Photo retouching, image manipulation &amp; posters">Adobe Photoshop</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Vector graphics, logo craft &amp; custom iconography">Adobe Illustrator</span>
-                            <span class="skill-pill snd-hover" data-tooltip="User flow mapping &amp; low-fidelity structural layouts">Wireframing</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Interactive micro-interactions &amp; user testing">Prototyping</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Reusable component libraries, tokens &amp; UI guidelines">Design Systems</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Logo design, visual assets &amp; brand guidelines">Brand Identity</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Font pairing, hierarchy &amp; custom display typography">Typography</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Harmonious color palettes &amp; contrast accessibility">Color Theory</span>
-                            <span class="skill-pill snd-hover" data-tooltip="CSS keyframes, smooth hover effects &amp; UI motion">Micro-Animations</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Narrative framing for digital &amp; print layouts">Visual Storytelling</span>
-                            <span class="skill-pill snd-hover" data-tooltip="Guiding visual aesthetics from concept to production">Creative Direction</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Interactive prototypes, auto-layout &amp; design systems">Figma
+                                (UI/UX)</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Photo retouching, image manipulation &amp; posters">Adobe Photoshop</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Vector graphics, logo craft &amp; custom iconography">Adobe
+                                Illustrator</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="User flow mapping &amp; low-fidelity structural layouts">Wireframing</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Interactive micro-interactions &amp; user testing">Prototyping</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Reusable component libraries, tokens &amp; UI guidelines">Design
+                                Systems</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Logo design, visual assets &amp; brand guidelines">Brand Identity</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Font pairing, hierarchy &amp; custom display typography">Typography</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Harmonious color palettes &amp; contrast accessibility">Color
+                                Theory</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="CSS keyframes, smooth hover effects &amp; UI motion">Micro-Animations</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Narrative framing for digital &amp; print layouts">Visual
+                                Storytelling</span>
+                            <span class="skill-pill snd-hover"
+                                data-tooltip="Guiding visual aesthetics from concept to production">Creative
+                                Direction</span>
                         </div>
                     </div>
                 </div>
@@ -365,21 +440,15 @@
             <div class="projects-grid">
                 <!-- Project 1 — MEAMBO -->
                 <article class="project-card scroll-reveal" id="project1">
-                    <div class="project-visual project-bg-4">
-                        <div class="project-icon-grid">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                        </div>
+                    <div class="project-visual project-img-meambo">
+                        <img src="img/meambo.png" alt="MEAMBO — Kelurahan Tipulu Platform"
+                            class="project-screenshot-meambo">
                         <span class="project-type-tag">Gov &amp; Community 🏛️</span>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-name">MEAMBO</h3>
-                        <p class="project-desc">Public digital administration platform for Kelurahan Tipulu to streamline online community service requests &amp; real-time service workflows.</p>
+                        <h3 class="project-name">MEAMBO – Public Digital Administration</h3>
+                        <p class="project-desc">Public digital administration platform for Kelurahan Tipulu to
+                            streamline online community service requests &amp; real-time service workflows.</p>
                         <div class="project-tags">
                             <span class="project-tag">Laravel</span>
                             <span class="project-tag">JavaScript</span>
@@ -387,7 +456,8 @@
                             <span class="project-tag">REST API</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://meambo.id" target="_blank" rel="noopener" class="proj-link snd-click">visit ↗</a>
+                            <a href="https://meambo.id" target="_blank" rel="noopener" class="proj-link snd-click">visit
+                                ↗</a>
                         </div>
                     </div>
                 </article>
@@ -395,13 +465,13 @@
                 <!-- Project 2 — Switchy -->
                 <article class="project-card scroll-reveal" id="project2">
                     <div class="project-visual project-img-1">
-                        <img src="img/switchy.jpg" alt="Switchy — Media Converter"
-                            class="project-screenshot">
+                        <img src="img/switchy.jpg" alt="Switchy — Media Converter" class="project-screenshot">
                         <span class="project-type-tag">Full-Stack ⚡</span>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-name">Switchy</h3>
-                        <p class="project-desc">In-browser responsive media converter for PNG to JPG, MOV to MP4, M4A to MP3 asynchronously with zero server storage.</p>
+                        <h3 class="project-name">Switchy – Media Converter</h3>
+                        <p class="project-desc">In-browser responsive media converter for PNG to JPG, MOV to MP4, M4A to
+                            MP3 asynchronously with zero server storage.</p>
                         <div class="project-tags">
                             <span class="project-tag">JavaScript</span>
                             <span class="project-tag">HTML5</span>
@@ -409,7 +479,8 @@
                             <span class="project-tag">Node.js</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://prasdionaditya.github.io/Switchy" target="_blank" rel="noopener" class="proj-link snd-click">live ↗</a>
+                            <a href="https://prasdionaditya.github.io/Switchy" target="_blank" rel="noopener"
+                                class="proj-link snd-click">live ↗</a>
                         </div>
                     </div>
                 </article>
@@ -433,7 +504,8 @@
                     </div>
                     <div class="project-info">
                         <h3 class="project-name">SiPaling Paham</h3>
-                        <p class="project-desc">AI-powered learning assistant integrating OpenAI LLM APIs to simplify university lecture materials into structured study guides &amp; summaries.</p>
+                        <p class="project-desc">AI-powered learning assistant integrating OpenAI LLM APIs to simplify
+                            university lecture materials into structured study guides &amp; summaries.</p>
                         <div class="project-tags">
                             <span class="project-tag">Python</span>
                             <span class="project-tag">OpenAI API</span>
@@ -441,32 +513,8 @@
                             <span class="project-tag">TailwindCSS</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/prasdionaditya/SiPaling-Paham" target="_blank" rel="noopener" class="proj-link snd-click">github ↗</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 4 — Royal AI Medical HR Chatbot -->
-                <article class="project-card scroll-reveal" id="project4">
-                    <div class="project-visual project-bg-3">
-                        <div class="project-icon-grid">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                        </div>
-                        <span class="project-type-tag">Healthcare AI 🤖</span>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Royal AI</h3>
-                        <p class="project-desc">Medical HR Chatbot platform developed in collaboration with faculty for a healthcare organization in Turkey, featuring user logs &amp; admin dashboards.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">AI Chatbot</span>
-                            <span class="project-tag">Web UI</span>
-                            <span class="project-tag">Admin Dashboard</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="proj-link" style="opacity: 0.7;">remote / 2024</span>
+                            <a href="https://github.com/prasdionaditya/SiPaling-Paham" target="_blank" rel="noopener"
+                                class="proj-link snd-click">github ↗</a>
                         </div>
                     </div>
                 </article>
@@ -492,22 +540,23 @@
                         <span class="lime-text">WILD!</span>
                     </h2>
                     <p class="contact-desc">
-                        got a project? a collab idea? or just wanna say hi?<br>
-                        worst i can say is <strong><em style="color: #1E45FB;">gasss!</em></strong> 🚀
+                        any project idea? worst i can say is <strong><em style="color: #1E45FB;">gasss!</em></strong> 🚀
                     </p>
 
                     <div class="contact-cta-group">
                         <button class="btn-lime btn-large say-hi-trigger snd-click" id="sayHiBtn" aria-expanded="false">
                             <span class="say-hi-label">say hi ↗</span>
                         </button>
-                        
+
                         <div class="say-hi-options" id="sayHiOptions" style="display: none;">
-                            <a href="https://wa.me/6281240843530?text=Hi%20Dion!%20Saw%20your%20portfolio..." target="_blank" rel="noopener" class="say-option option-wa snd-click" id="waOptionBtn">
+                            <a href="https://wa.me/6281240843530?text=Hi%20Dion!%20Saw%20your%20portfolio..."
+                                target="_blank" rel="noopener" class="say-option option-wa snd-click" id="waOptionBtn">
                                 <span class="opt-icon">💬</span>
                                 <span class="opt-text">WhatsApp</span>
                                 <span class="opt-arrow">↗</span>
                             </a>
-                            <a href="mailto:dionaditya59@gmail.com?subject=Hi%20Dion!" class="say-option option-email snd-click" id="emailOptionBtn">
+                            <a href="mailto:dionaditya59@gmail.com?subject=Hi%20Dion!"
+                                class="say-option option-email snd-click" id="emailOptionBtn">
                                 <span class="opt-icon">✉️</span>
                                 <span class="opt-text">Email</span>
                                 <span class="opt-arrow">↗</span>
@@ -516,8 +565,8 @@
                     </div>
 
                     <div class="social-links">
-                        <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener" class="social-link"
-                            aria-label="Instagram" id="socialInstagram">
+                        <a href="https://instagram.com/prasdionaditya" target="_blank" rel="noopener"
+                            class="social-link" aria-label="Instagram" id="socialInstagram">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -526,11 +575,12 @@
                             </svg>
                             <span>instagram</span>
                         </a>
-                        <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener" class="social-link"
-                            aria-label="LinkedIn" id="socialLinkedin">
+                        <a href="https://linkedin.com/in/prasdionaditya" target="_blank" rel="noopener"
+                            class="social-link" aria-label="LinkedIn" id="socialLinkedin">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                                 <rect x="2" y="9" width="4" height="12" />
                                 <circle cx="4" cy="4" r="2" />
                             </svg>
@@ -564,11 +614,12 @@
                         <div class="otw-ring" id="otwRing">
                             <svg viewBox="0 0 200 200" class="otw-svg">
                                 <defs>
-                                    <path id="circlePath" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+                                    <path id="circlePath"
+                                        d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
                                 </defs>
                                 <text class="otw-text">
                                     <textPath href="#circlePath" startOffset="0%">
-                                        ✦ OPEN TO WORK ✦ OPEN TO WORK ✦ OPEN TO WORK 
+                                        ✦ OPEN TO WORK ✦ OPEN TO WORK ✦ OPEN TO WORK
                                     </textPath>
                                 </text>
                             </svg>
@@ -596,7 +647,7 @@
         <div class="footer-doodle-overlay"></div>
         <div class="container">
             <div class="footer-content">
-                <p class="footer-credit">designed &amp; built by <span class="lime-text">dion</span> | code meets design
+                <p class="footer-credit">designed &amp; vibe-coded by <span class="lime-text">dion</span>
                     ✦</p>
                 <p class="footer-copy">© 2026</p>
             </div>

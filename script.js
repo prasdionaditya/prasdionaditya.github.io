@@ -224,7 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============ SMOOTH ANCHOR SCROLLING ============
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', (e) => {
-            const target = document.querySelector(a.getAttribute('href'));
+            const href = a.getAttribute('href');
+            if (!href || href === '#') return;
+            const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth' });
@@ -255,47 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // ============ LETTERBOXD LIVE RSS SYNC ============
-    const syncLetterboxd = async () => {
-        const movieCard = document.querySelector('.movie-card');
-        if (!movieCard) return;
 
-        const posterImg = movieCard.querySelector('.vibing-poster');
-        const trackTitle = movieCard.querySelector('.vibing-track');
-        const trackArtist = movieCard.querySelector('.vibing-artist');
-        const profileLink = movieCard.querySelector('.vibing-link');
-
-        try {
-            const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fletterboxd.com%2Fdionicious%2Frss%2F');
-            const data = await res.json();
-
-            if (data.status === 'ok' && data.items && data.items.length > 0) {
-                const latest = data.items[0];
-                const titleParts = latest.title.split(' - ');
-                const rawTitle = titleParts[0] || latest.title;
-                const rating = titleParts[1] || '★★★★★';
-                const filmName = rawTitle.replace(/,\s*\d{4}$/, '');
-
-                const imgMatch = latest.description ? latest.description.match(/<img[^>]+src="([^">]+)"/) : null;
-                if (imgMatch && imgMatch[1]) {
-                    posterImg.src = imgMatch[1];
-                    posterImg.alt = `${filmName} Poster`;
-                }
-
-                trackTitle.textContent = filmName;
-                trackArtist.textContent = `Latest Log • ${rating}`;
-                if (latest.link && profileLink) {
-                    profileLink.href = latest.link;
-                    const span = profileLink.querySelector('span');
-                    if (span) span.textContent = 'read on letterboxd';
-                }
-            }
-        } catch (e) {
-            console.warn('Letterboxd live sync fallback active:', e);
-        }
-    };
-
-    syncLetterboxd();
 
 
     // Helper to dynamically fetch official high-res album artwork via iTunes Search API
@@ -307,9 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.results && data.results.length > 0) {
                 const artistLower = artist.toLowerCase();
                 // Find exact artist match first
-                const match = data.results.find(item => 
+                const match = data.results.find(item =>
                     item.artistName && (
-                        item.artistName.toLowerCase().includes(artistLower) || 
+                        item.artistName.toLowerCase().includes(artistLower) ||
                         artistLower.includes(item.artistName.toLowerCase())
                     )
                 );
@@ -400,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sayHiBtn?.addEventListener('click', (e) => {
         e.preventDefault();
         const isExpanded = sayHiBtn.getAttribute('aria-expanded') === 'true';
-        
+
         if (isExpanded) {
             sayHiOptions.style.display = 'none';
             sayHiBtn.setAttribute('aria-expanded', 'false');
@@ -518,20 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // ============ 3D TILT ON PROJECT CARDS ============
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width;
-            const y = (e.clientY - rect.top) / rect.height;
-            const tiltX = (y - 0.5) * 8;   // -4 to +4 deg
-            const tiltY = (x - 0.5) * -8;
-            card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-6px)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
+
 
 
     // ============ MOUSE-FOLLOW GLOW ON PROJECT CARDS ============
@@ -784,10 +733,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Step 2: Swap word and prepare enter state from below (+130%)
                 currentIdx = (currentIdx + 1) % abilities.length;
                 renderLetters(abilities[currentIdx]);
-                
+
                 heroAbilityBox.classList.remove('is-exiting');
                 heroAbilityBox.classList.add('is-entering');
-                
+
                 // Force DOM reflow to apply is-entering without transition
                 void heroAbilityBox.offsetWidth;
 
@@ -799,7 +748,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
 
 // ============ SKILL PILL ANIMATION KEYFRAMES ============
 const styleTag = document.createElement('style');
