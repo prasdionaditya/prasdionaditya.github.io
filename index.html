@@ -19,9 +19,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="img/dion.png">
 
-    <!-- Favicon (headshot) -->
-    <link rel="icon" type="image/png" href="img/dion.png">
-    <link rel="apple-touch-icon" href="img/dion.png">
+    <!-- Favicon (headshot - locked 1:1 ratio) -->
+    <link rel="icon" type="image/png" sizes="512x512" href="img/favicon.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="img/favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -178,146 +178,218 @@
                         sick. Whether I'm crafting React interfaces or tuning responsive layouts, I keep everything
                         clean, fast, and pixel-perfect.
                     </p>
-                    <div class="about-tags">
-                        <span class="about-tag snd-hover">🎨 Graphic Design</span>
-                        <span class="about-tag snd-hover">💻 Full-Stack Dev</span>
-                        <span class="about-tag snd-hover">✨ UI/UX Design</span>
-                        <span class="about-tag snd-hover">⚡ React &amp; Node</span>
-                        <span class="about-tag snd-hover">🚀 Fast &amp; Responsive</span>
-                        <span class="about-tag snd-hover">🎯 Pixel-Perfect</span>
-                    </div>
                 </div>
             </div>
 
-            <!-- Hobbies & Interests (Seamlessly Integrated inside #about) -->
+            <!-- Hobbies & Interests — Interactive Slideshow Carousel -->
             <div class="vibing-wrap scroll-reveal">
                 <div class="vibing-header">
-                    <span class="vibing-badge">CURRENTLY VIBING ⚡</span>
                     <h3 class="vibing-title">HOBBIES N INTERESTS</h3>
+                    <p class="vibing-subtext">CURRENTLY VIBING ⚡</p>
                 </div>
 
-                <!-- Sub-section 1: Media & Entertainment -->
-                <div class="vibing-subsection">
-                    <h4 class="vibing-sub-title"><span>01</span> Media &amp; Entertainment</h4>
-                    <div class="vibing-grid vibing-grid-media">
-                        <!-- Spotify / Music Card -->
-                        <div class="vibing-card music-card snd-hover">
-                            <div class="vibing-card-top">
-                                <div class="vibing-badge-pill">
-                                    <span class="vibing-icon">🎵</span>
-                                    <span class="vibing-tag">ON REPEAT</span>
-                                </div>
-                                <span class="music-handle"
-                                    style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">Most
-                                    Listened This Month</span>
-                            </div>
-                            <div class="vibing-body">
-                                <img src="img/cortis_redred.png" alt="REDRED — CORTIS Album Cover"
-                                    class="vibing-poster music-poster">
-                                <div class="vibing-content">
-                                    <h4 class="vibing-track">REDRED</h4>
-                                    <p class="vibing-artist">CORTIS • Top Track</p>
-                                    <a href="https://open.spotify.com/user/31xl4dkmwqq6nwcu4isdaotls6rm" target="_blank"
-                                        rel="noopener" class="vibing-link snd-click" id="spotifyTrackBtn">
-                                        <span>see my taste in music</span> ↗
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Slide Selector Tabs -->
+                <div class="hobby-tabs-nav" id="hobbyTabsNav">
+                    <button class="hobby-tab-btn is-active snd-click" data-slide="0">
+                        <span class="tab-icon">🎵</span>
+                        <span class="tab-text">Music</span>
+                    </button>
+                    <button class="hobby-tab-btn snd-click" data-slide="1">
+                        <span class="tab-icon">🎬</span>
+                        <span class="tab-text">Movies</span>
+                    </button>
+                    <button class="hobby-tab-btn snd-click" data-slide="2">
+                        <span class="tab-icon">🎨</span>
+                        <span class="tab-text">Graphic Design</span>
+                    </button>
+                    <button class="hobby-tab-btn snd-click" data-slide="3">
+                        <span class="tab-icon">📸</span>
+                        <span class="tab-text">Photography</span>
+                    </button>
+                    <button class="hobby-tab-btn snd-click" data-slide="4">
+                        <span class="tab-icon">🎙️</span>
+                        <span class="tab-text">Content Creating</span>
+                    </button>
+                </div>
 
-                        <!-- Fav Movie Card (Real Letterboxd Poster) -->
-                        <div class="vibing-card movie-card snd-hover">
-                            <div class="vibing-card-top">
-                                <div class="vibing-badge-pill">
-                                    <span class="vibing-icon">🎬</span>
-                                    <span class="vibing-tag">#1 Fav Movie</span>
+                <!-- Slideshow Carousel Container -->
+                <div class="hobby-carousel-stage" id="hobbyCarouselStage">
+                    <button class="carousel-arrow arrow-prev snd-click" id="hobbyPrevBtn"
+                        aria-label="Previous hobby slide">
+                        ‹
+                    </button>
+
+                    <div class="hobby-slides-viewport">
+                        <div class="hobby-slides-track" id="hobbySlidesTrack">
+
+                            <!-- Slide 0: Music -->
+                            <div class="hobby-slide is-active" data-index="0">
+                                <div class="vibing-card music-card">
+                                    <div class="vibing-card-top">
+                                        <div class="vibing-badge-pill">
+                                            <span class="vibing-icon">🎵</span>
+                                            <span class="vibing-tag">ON REPEAT</span>
+                                        </div>
+                                        <span class="music-handle"
+                                            style="font-size: 0.9rem; font-weight: 700; color: var(--blue); opacity: 0.85;">Most
+                                            Listened This Month</span>
+                                    </div>
+                                    <div class="vibing-body">
+                                        <img src="img/cortis_redred.png" alt="REDRED — CORTIS Album Cover"
+                                            class="vibing-poster music-poster">
+                                        <div class="vibing-content">
+                                            <h4 class="vibing-track">REDRED</h4>
+                                            <p class="vibing-artist">CORTIS • Top Track</p>
+                                            <a href="https://open.spotify.com/user/31xl4dkmwqq6nwcu4isdaotls6rm"
+                                                target="_blank" rel="noopener" class="vibing-link snd-click"
+                                                id="spotifyTrackBtn">
+                                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+                                                    alt="Spotify" class="social-brand-icon-img">
+                                                <span>see my music taste</span> ↗
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <span class="letterboxd-handle"
-                                    style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@dionicious</span>
                             </div>
-                            <div class="vibing-body">
-                                <img src="https://i.pinimg.com/1200x/2a/e6/95/2ae695f614daae6926efe0d1efbddf01.jpg" alt="Dune Movie Poster" class="vibing-poster">
-                                <div class="vibing-content">
-                                    <h4 class="vibing-track">Dune</h4>
-                                    <p class="vibing-artist">254 films logged • ★★★★★</p>
-                                    <a href="https://letterboxd.com/dionicious/" target="_blank" rel="noopener"
-                                        class="vibing-link snd-click" id="letterboxdProfileBtn">
-                                        <span>view letterboxd profile</span> ↗
-                                    </a>
+
+                            <!-- Slide 1: Movies -->
+                            <div class="hobby-slide" data-index="1">
+                                <div class="vibing-card movie-card">
+                                    <div class="vibing-card-top">
+                                        <div class="vibing-badge-pill">
+                                            <span class="vibing-icon">🎬</span>
+                                            <span class="vibing-tag">#1 FAV MOVIE</span>
+                                        </div>
+                                        <span class="letterboxd-handle"
+                                            style="font-size: 0.9rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@dionicious</span>
+                                    </div>
+                                    <div class="vibing-body">
+                                        <img src="https://i.pinimg.com/1200x/20/2d/34/202d342024d98f7e41f13dc25f61d049.jpg"
+                                            alt="Dune Movie Poster" class="vibing-poster">
+                                        <div class="vibing-content">
+                                            <h4 class="vibing-track">the odyssey</h4>
+                                            <p class="vibing-artist">a film by CRHRISTOPHER NOLAN</p>
+                                            <a href="https://letterboxd.com/dionicious/" target="_blank" rel="noopener"
+                                                class="vibing-link snd-click" id="letterboxdProfileBtn">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRpFZIm6Gp13p9WQ9TfharzuN7HS4J4Bo_dEs5Hp5uGg&s=10"
+                                                    alt="Letterboxd" class="social-brand-icon-img">
+                                                <span>see my movie taste</span> ↗
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
+                            <!-- Slide 2: Graphic Design (@di0nicious) -->
+                            <div class="hobby-slide" data-index="2">
+                                <div class="vibing-card hobby-single-card" data-hobby="design">
+                                    <div class="vibing-card-top">
+                                        <div class="vibing-badge-pill">
+                                            <span class="vibing-icon">🎨</span>
+                                            <span class="vibing-tag">GRAPHIC DESIGN</span>
+                                        </div>
+                                        <span class="instagram-handle"
+                                            style="font-size: 0.9rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@di0nicious</span>
+                                    </div>
+                                    <div class="vibing-body">
+                                        <img src="img/hobby_design.jpg" alt="Graphic Design is my passion"
+                                            class="vibing-poster hobby-card-thumb">
+                                        <div class="vibing-content">
+                                            <h4 class="vibing-track">GRAPHIC DESIGN</h4>
+                                            <p class="vibing-artist">visual identity, brand systems &amp; poster art</p>
+                                            <div class="sneak-peek-links">
+                                                <a href="https://instagram.com/di0nicious" target="_blank"
+                                                    rel="noopener" class="vibing-link sneak-link snd-click">
+                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
+                                                        alt="Instagram" class="social-brand-icon-img">
+                                                    <span>see my artworks</span> ↗
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Photography (@takenbydion) -->
+                            <div class="hobby-slide" data-index="3">
+                                <div class="vibing-card hobby-single-card" data-hobby="photo">
+                                    <div class="vibing-card-top">
+                                        <div class="vibing-badge-pill">
+                                            <span class="vibing-icon">📸</span>
+                                            <span class="vibing-tag">Photography</span>
+                                        </div>
+                                        <span class="instagram-handle"
+                                            style="font-size: 0.9rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@takenbydion</span>
+                                    </div>
+                                    <div class="vibing-body">
+                                        <img src="img/hobby_photo.jpg" alt="Photography"
+                                            class="vibing-poster hobby-card-thumb">
+                                        <div class="vibing-content">
+                                            <h4 class="vibing-track">Photography</h4>
+                                            <a href="https://instagram.com/takenbydion" target="_blank" rel="noopener"
+                                                class="vibing-link snd-click">
+                                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
+                                                    alt="Instagram" class="social-brand-icon-img">
+                                                <span>see my photos</span> ↗
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Content Creating (@prasdionaditya) -->
+                            <div class="hobby-slide" data-index="4">
+                                <div class="vibing-card hobby-single-card" data-hobby="content">
+                                    <div class="vibing-card-top">
+                                        <div class="vibing-badge-pill">
+                                            <span class="vibing-icon">🎙️</span>
+                                            <span class="vibing-tag">Content Creating</span>
+                                        </div>
+                                        <span class="social-handles-pill"
+                                            style="font-size: 0.9rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@prasdionaditya</span>
+                                    </div>
+                                    <div class="vibing-body">
+                                        <img src="img/hobby_content.png" alt="Content Creating"
+                                            class="vibing-poster hobby-card-thumb">
+                                        <div class="vibing-content">
+                                            <h4 class="vibing-track">Content Creating</h4>
+                                            <p class="vibing-artist">Song covers &amp; video edits</p>
+                                            <div class="sneak-peek-links"
+                                                style="display: flex; gap: 14px; flex-wrap: wrap;">
+                                                <a href="https://tiktok.com/@prasdionaditya" target="_blank"
+                                                    rel="noopener" class="vibing-link sneak-link snd-click">
+                                                    <img src="https://i.pinimg.com/736x/e1/0e/3f/e10e3f21d3b4e0f40b04b8fee7f40da4.jpg"
+                                                        alt="TikTok" class="social-brand-icon-img">
+                                                    <span>tiktok @prasdionaditya</span> ↗
+                                                </a>
+                                                <a href="https://youtube.com/@prasdionaditya" target="_blank"
+                                                    rel="noopener" class="vibing-link sneak-link snd-click">
+                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"
+                                                        alt="YouTube" class="social-brand-icon-img">
+                                                    <span>youtube channel</span> ↗
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+
+                    <button class="carousel-arrow arrow-next snd-click" id="hobbyNextBtn" aria-label="Next hobby slide">
+                        ›
+                    </button>
                 </div>
 
-                <!-- Sub-section 2: Creative & Crafts -->
-                <div class="vibing-subsection">
-                    <h4 class="vibing-sub-title"><span>02</span> Creative &amp; Crafts</h4>
-                    <div class="vibing-grid vibing-grid-creative">
-                        <!-- Photography Card (Integrated with Instagram @takenbydion) -->
-                        <a href="https://instagram.com/takenbydion" target="_blank" rel="noopener"
-                            class="vibing-card hobby-single-card snd-hover snd-click" style="text-decoration: none;">
-                            <div class="vibing-card-top">
-                                <div class="vibing-badge-pill">
-                                    <span class="vibing-icon">📸</span>
-                                    <span class="vibing-tag">Photography</span>
-                                </div>
-                                <span class="instagram-handle"
-                                    style="font-size: 0.8rem; font-weight: 700; color: var(--blue); opacity: 0.85;">@takenbydion</span>
-                            </div>
-                            <div class="vibing-body">
-                                <img src="img/hobby_photo.png" alt="Photography" class="vibing-poster hobby-card-thumb">
-                                <div class="vibing-content">
-                                    <h4 class="vibing-track">Photography</h4>
-                                    <p class="vibing-artist">Street aesthetics &amp; color grading</p>
-                                    <span class="vibing-link">view instagram ↗</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- Graphic Design Card -->
-                        <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="design" role="button"
-                            tabindex="0">
-                            <div class="vibing-card-top">
-                                <div class="vibing-badge-pill">
-                                    <span class="vibing-icon">🎨</span>
-                                    <span class="vibing-tag">Graphic Design</span>
-                                </div>
-                                <span class="hobby-arrow"
-                                    style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
-                            </div>
-                            <div class="vibing-body">
-                                <img src="img/hobby_content.png" alt="Graphic Design"
-                                    class="vibing-poster hobby-card-thumb">
-                                <div class="vibing-content">
-                                    <h4 class="vibing-track">Graphic Design</h4>
-                                    <p class="vibing-artist">Visual identity &amp; brand systems</p>
-                                    <span class="vibing-link">view showcase ↗</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Content Creating Card -->
-                        <div class="vibing-card hobby-single-card snd-hover snd-click" data-hobby="content"
-                            role="button" tabindex="0">
-                            <div class="vibing-card-top">
-                                <div class="vibing-badge-pill">
-                                    <span class="vibing-icon">🎙️</span>
-                                    <span class="vibing-tag">Content Creating</span>
-                                </div>
-                                <span class="hobby-arrow"
-                                    style="font-size: 1.1rem; font-weight: 700; color: var(--blue); transition: transform var(--t-fast);">↗</span>
-                            </div>
-                            <div class="vibing-body">
-                                <img src="img/hobby_content.png" alt="Content Creating"
-                                    class="vibing-poster hobby-card-thumb">
-                                <div class="vibing-content">
-                                    <h4 class="vibing-track">Content Creating</h4>
-                                    <p class="vibing-artist">Song covers &amp; video edits</p>
-                                    <span class="vibing-link">view media ↗</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Slide Dots Indicator & Progress Bar -->
+                <div class="hobby-carousel-footer">
+                    <div class="hobby-dots" id="hobbyDots">
+                        <button class="dot is-active snd-click" data-slide="0" aria-label="Go to Music slide"></button>
+                        <button class="dot snd-click" data-slide="1" aria-label="Go to Movies slide"></button>
+                        <button class="dot snd-click" data-slide="2" aria-label="Go to Graphic Design slide"></button>
+                        <button class="dot snd-click" data-slide="3" aria-label="Go to Photography slide"></button>
+                        <button class="dot snd-click" data-slide="4" aria-label="Go to Content Creating slide"></button>
                     </div>
                 </div>
             </div>
