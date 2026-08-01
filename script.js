@@ -615,27 +615,115 @@ document.addEventListener('DOMContentLoaded', () => {
             tags: ["Acoustic Fingerstyle", "Electric Lead", "Music Production", "Improv & Riffs"]
         },
         content: {
-            badge: "🎙️ Content Creating",
+            badge: "🎙️ Content Creating • @prasdionaditya",
             title: "SONG COVERS & MEDIA",
             image: "img/hobby_content.png",
-            desc: "Arranging and recording acoustic song covers / handling everything from vocal tracks and DAW mixing (Logic / Ableton) to video editing and color grading.",
-            tags: ["Song Cover Production", "Vocal & DAW Mixing", "Video Editing", "Audio Mastering"]
+            desc: "Arranging and recording acoustic song covers, video edits, and creative vlogs. Watch my latest content on TikTok & YouTube @prasdionaditya.",
+            tags: ["TikTok @prasdionaditya", "YouTube Channel", "Video Edits", "Song Covers"]
         },
         photo: {
-            badge: "📸 Photography",
+            badge: "📸 Photography • @takenbydion",
             title: "VISUAL PHOTOGRAPHY",
-            image: "img/hobby_photo.png",
-            desc: "Exploring visual composition through street photography, architectural framing, and mood color-grading. A passion that directly feeds into my UI/UX design taste.",
-            tags: ["Street Photography", "Architectural Shots", "Color Grading", "Visual Storytelling"]
+            image: "img/hobby_photo.jpg",
+            desc: "Exploring visual composition through street photography, architectural framing, and mood color-grading. Sneak peek my portfolio on Instagram @takenbydion.",
+            tags: ["Street Photography", "Color Grading", "Visual Storytelling", "@takenbydion"]
         },
         design: {
-            badge: "🎨 Graphic Design",
+            badge: "🎨 Graphic Design • @di0nicious",
             title: "BRAND & VISUAL SYSTEMS",
-            image: "img/hobby_content.png",
-            desc: "Crafting bold brand identities, design systems, visual layouts, and digital graphics. Combining typography, color theory, and modern aesthetics.",
-            tags: ["Brand Identity", "Design Systems", "Visual Layouts", "Typography & Color"]
+            image: "img/hobby_design.jpg",
+            desc: "Crafting bold brand identities, design systems, visual layouts, and digital graphics. Sneak peek my graphic design work on Instagram @di0nicious.",
+            tags: ["Brand Identity", "Design Systems", "Poster Art", "Instagram @di0nicious"]
         }
     };
+
+    // ============ HOBBIES SLIDESHOW CAROUSEL ============
+    const slidesTrack = document.getElementById('hobbySlidesTrack');
+    const slides = document.querySelectorAll('.hobby-slide');
+    const tabBtns = document.querySelectorAll('.hobby-tab-btn');
+    const dotBtns = document.querySelectorAll('.hobby-dots .dot');
+    const prevBtn = document.getElementById('hobbyPrevBtn');
+    const nextBtn = document.getElementById('hobbyNextBtn');
+
+    if (slidesTrack && slides.length > 0) {
+        let currentSlide = 0;
+        let autoPlayInterval = null;
+
+        const goToSlide = (index) => {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            currentSlide = index;
+
+            // Move track
+            slidesTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Active class toggles
+            slides.forEach((s, i) => s.classList.toggle('is-active', i === currentSlide));
+            tabBtns.forEach((b, i) => b.classList.toggle('is-active', i === currentSlide));
+            dotBtns.forEach((d, i) => d.classList.toggle('is-active', i === currentSlide));
+        };
+
+        const nextSlide = () => goToSlide(currentSlide + 1);
+        const prevSlide = () => goToSlide(currentSlide - 1);
+
+        prevBtn?.addEventListener('click', () => {
+            prevSlide();
+            resetAutoPlay();
+        });
+
+        nextBtn?.addEventListener('click', () => {
+            nextSlide();
+            resetAutoPlay();
+        });
+
+        tabBtns.forEach((btn, idx) => {
+            btn.addEventListener('click', () => {
+                goToSlide(idx);
+                resetAutoPlay();
+            });
+        });
+
+        dotBtns.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                goToSlide(idx);
+                resetAutoPlay();
+            });
+        });
+
+        // Touch & Swipe gestures for mobile
+        let startX = 0;
+        slidesTrack.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        slidesTrack.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+                resetAutoPlay();
+            }
+        }, { passive: true });
+
+        // Auto play every 5s
+        const startAutoPlay = () => {
+            autoPlayInterval = setInterval(nextSlide, 5000);
+        };
+        const stopAutoPlay = () => {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+        };
+        const resetAutoPlay = () => {
+            stopAutoPlay();
+            startAutoPlay();
+        };
+
+        const carouselStage = document.getElementById('hobbyCarouselStage');
+        carouselStage?.addEventListener('mouseenter', stopAutoPlay);
+        carouselStage?.addEventListener('mouseleave', startAutoPlay);
+
+        startAutoPlay();
+    }
 
     const openHobbyModal = (hobbyKey) => {
         const data = hobbyData[hobbyKey];
