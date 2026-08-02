@@ -246,50 +246,6 @@ html.fonts-loaded .preloader-content {
 }
 
 
-/* ============ CUSTOM CURSOR ============ */
-.cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    background: var(--lime);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s, opacity 0.15s;
-    will-change: transform;
-}
-
-.cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 36px;
-    height: 36px;
-    border: 2px solid var(--lime);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    opacity: 0.5;
-    will-change: transform;
-    transition: opacity 0.3s;
-}
-
-.cursor-dot.hover {
-    transform: translate(var(--dx, 0), var(--dy, 0)) scale(2.5);
-    background: var(--lime);
-}
-
-.cursor-ring.hover {
-    opacity: 0.8;
-    transform: translate(var(--rx, 0), var(--ry, 0)) scale(1.5);
-}
-
-.cursor-dot.hidden,
-.cursor-ring.hidden {
-    opacity: 0;
-}
 
 
 /* ============ REVEAL ANIMATIONS ============ */
@@ -351,10 +307,6 @@ body.loaded .reveal-up {
     object-fit: contain;
     mix-blend-mode: screen;
     transition: transform var(--t-fast);
-}
-
-.nav-scrolled .nav-logo-img {
-    mix-blend-mode: multiply;
 }
 
 .nav-logo:hover .nav-logo-img {
@@ -716,14 +668,6 @@ footer {
     transform: translateY(-2px);
 }
 
-/* ——— Open To Work Badge ——— */
-.hero-badge-area {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
 
 .otw-wrapper {
     position: relative;
@@ -823,43 +767,6 @@ footer {
     letter-spacing: 0.5px;
 }
 
-/* Scroll indicator */
-.scroll-indicator {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.45);
-}
-
-.scroll-line {
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-
-    0%,
-    100% {
-        transform: scaleY(1);
-        opacity: 0.4;
-    }
-
-    50% {
-        transform: scaleY(1.3);
-        opacity: 0.9;
-    }
-}
 
 
 /* ============ MARQUEE ============ */
@@ -991,30 +898,6 @@ footer {
     margin-bottom: 32px;
 }
 
-.about-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.about-tag {
-    padding: 8px 16px;
-    background: rgba(30, 69, 251, 0.06);
-    border: 1.5px solid rgba(30, 69, 251, 0.2);
-    color: var(--blue);
-    border-radius: var(--r-full);
-    font-size: 0.88rem;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    transition: all var(--t-fast);
-}
-
-.about-tag:hover {
-    background: var(--blue);
-    color: var(--white);
-    border-color: var(--blue);
-    transform: translateY(-2px);
-}
 
 
 .vibing-wrap {
@@ -1247,21 +1130,7 @@ footer {
     opacity: 0.6;
 }
 
-.project-bg-1 {
-    background: linear-gradient(135deg, #1E45FB 0%, #0e23a8 100%);
-}
 
-.project-bg-2 {
-    background: linear-gradient(135deg, #0e23a8 0%, #06124f 100%);
-}
-
-.project-bg-3 {
-    background: linear-gradient(135deg, #7209B7 0%, #3F37C9 100%);
-}
-
-.project-bg-4 {
-    background: linear-gradient(135deg, #F72585 0%, #7209B7 100%);
-}
 
 .project-type-tag {
     position: absolute;
@@ -1486,25 +1355,7 @@ footer {
     font-size: 1.1rem;
 }
 
-.btn-ghost-lime {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 32px;
-    background: transparent;
-    color: var(--blue);
-    font-weight: 700;
-    font-size: 1rem;
-    border: 2px solid rgba(30, 69, 251, 0.35);
-    border-radius: var(--r-full);
-    transition: all var(--t-fast);
-}
 
-.btn-ghost-lime:hover {
-    background: rgba(30, 69, 251, 0.07);
-    border-color: var(--blue);
-    transform: translateY(-2px);
-}
 
 .social-links {
     display: flex;
@@ -1689,10 +1540,7 @@ footer {
         text-align: center;
     }
 
-    .cursor-dot,
-    .cursor-ring {
-        display: none;
-    }
+
 
     body {
         cursor: auto;
@@ -1757,10 +1605,7 @@ footer {
 /* ============ HOVER ============ */
 @media (hover: none) {
 
-    .cursor-dot,
-    .cursor-ring {
-        display: none !important;
-    }
+
 
     body,
     body a,
@@ -1796,128 +1641,7 @@ footer {
 }
 
 
-/* ============ SOUND TOGGLE ============ */
-.sound-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    font-size: 1rem;
-    color: var(--white);
-    transition: all var(--t-fast);
-    flex-shrink: 0;
-}
 
-.sound-toggle:hover {
-    background: var(--lime);
-    border-color: var(--lime);
-    transform: scale(1.1);
-}
-
-#navbar.scrolled .sound-toggle {
-    background: rgba(30, 69, 251, 0.15);
-    border-color: rgba(30, 69, 251, 0.3);
-}
-
-
-/* ============ CONTACT FORM ============ */
-.contact-form-wrap {
-    margin: 40px 0;
-    padding: 36px;
-    background: var(--white);
-    border: 1.5px solid rgba(30, 69, 251, 0.1);
-    border-radius: var(--r-lg);
-    box-shadow: 0 8px 40px rgba(30, 69, 251, 0.08);
-}
-
-.form-title {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    color: var(--blue);
-    margin-bottom: 24px;
-    letter-spacing: 0.5px;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 16px;
-}
-
-.form-row .form-group {
-    margin-bottom: 0;
-}
-
-.form-group label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--gray-500);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 14px 18px;
-    background: var(--off-white);
-    border: 1.5px solid rgba(30, 69, 251, 0.12);
-    border-radius: var(--r-md);
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--gray-700);
-    transition: border-color var(--t-fast), box-shadow var(--t-fast);
-    outline: none;
-    resize: vertical;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(30, 69, 251, 0.12);
-    background: var(--white);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: var(--gray-300);
-}
-
-.form-submit {
-    margin-top: 8px;
-    width: 100%;
-    justify-content: center;
-}
-
-.form-success {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 20px 24px;
-    background: rgba(205, 242, 43, 0.15);
-    border: 1.5px solid var(--lime);
-    border-radius: var(--r-md);
-    font-weight: 700;
-    color: var(--gray-700);
-    margin-top: 16px;
-}
-
-.success-icon {
-    font-size: 1.4rem;
-    color: var(--blue);
-}
 
 
 /* ============ ABOUT SECTION — text on white bg ============ */
@@ -1947,17 +1671,7 @@ footer {
     color: var(--gray-500);
 }
 
-.about-tag {
-    background: rgba(30, 69, 251, 0.06);
-    border: 1.5px solid rgba(30, 69, 251, 0.2);
-    color: var(--blue);
-}
 
-.about-tag:hover {
-    background: var(--blue);
-    color: var(--white);
-    border-color: var(--blue);
-}
 
 
 /* ============ SKILLS SECTION — eyebrow on white ============ */
@@ -1996,13 +1710,7 @@ footer {
     gap: 6px;
 }
 
-.vibing-badge {
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    color: var(--blue);
-    text-transform: uppercase;
-}
+
 
 .vibing-title {
     font-family: var(--font-display);
@@ -2168,12 +1876,7 @@ footer {
     box-shadow: 0 2px 8px rgba(30, 69, 251, 0.3);
 }
 
-.vibing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    justify-content: center;
-    gap: 20px;
-}
+
 
 .vibing-card {
     background: var(--off-white);
@@ -2244,67 +1947,7 @@ footer {
     color: var(--blue);
 }
 
-/* Equalizer animation for music card */
-.equalizer {
-    display: flex;
-    align-items: flex-end;
-    gap: 3px;
-    height: 16px;
-}
 
-.equalizer span {
-    width: 3px;
-    background: var(--blue);
-    border-radius: 2px;
-    animation: eqBounce 0.8s ease-in-out infinite alternate;
-}
-
-.equalizer span:nth-child(1) {
-    height: 60%;
-    animation-delay: 0.1s;
-}
-
-.equalizer span:nth-child(2) {
-    height: 100%;
-    animation-delay: 0.3s;
-}
-
-.equalizer span:nth-child(3) {
-    height: 40%;
-    animation-delay: 0.2s;
-}
-
-.equalizer span:nth-child(4) {
-    height: 80%;
-    animation-delay: 0.4s;
-}
-
-@keyframes eqBounce {
-    0% {
-        height: 20%;
-    }
-
-    100% {
-        height: 100%;
-    }
-}
-
-/* Spotify Embed */
-.spotify-embed-wrap {
-    margin-top: 12px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(30, 69, 251, 0.15);
-    transition: transform var(--t-fast), box-shadow var(--t-fast);
-}
-
-.spotify-embed-wrap iframe {
-    display: block;
-}
-
-.music-card:hover .spotify-embed-wrap {
-    box-shadow: 0 10px 28px rgba(30, 69, 251, 0.25);
-}
 
 .vibing-body {
     display: flex;
@@ -2379,281 +2022,7 @@ footer {
     transform: translateX(3px);
 }
 
-/* ============ CLICKABLE HOBBIES & MODAL ============ */
-.hobbies-clickable-card {
-    grid-column: span 1;
-}
 
-.vibing-hint {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--blue);
-    opacity: 0.8;
-}
-
-.hobbies-click-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 16px;
-}
-
-.hobby-click-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
-    background: var(--white);
-    border: 1.5px solid rgba(30, 69, 251, 0.14);
-    border-radius: var(--r-md);
-    cursor: pointer;
-    transition: transform var(--t-fast), border-color var(--t-fast), background var(--t-fast), box-shadow var(--t-fast);
-    user-select: none;
-}
-
-.hobby-click-item:hover {
-    transform: translateX(6px) scale(1.02);
-    border-color: var(--blue);
-    background: var(--blue);
-    box-shadow: 0 8px 24px rgba(30, 69, 251, 0.2);
-}
-
-.hobby-click-item:hover .hobby-item-title {
-    color: var(--white);
-}
-
-.hobby-click-item:hover .hobby-item-desc {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.hobby-click-item:hover .hobby-item-icon {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.hobby-click-item:hover .hobby-arrow {
-    color: var(--lime);
-    transform: translate(3px, -3px);
-    opacity: 1;
-}
-
-.hobby-item-icon {
-    font-size: 1.4rem;
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(30, 69, 251, 0.06);
-    border-radius: var(--r-sm);
-    transition: background var(--t-fast);
-}
-
-.hobby-item-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.hobby-item-title {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    color: var(--blue);
-    line-height: 1.1;
-    transition: color var(--t-fast);
-}
-
-.hobby-item-desc {
-    font-size: 0.78rem;
-    color: var(--gray-500);
-    font-weight: 500;
-    line-height: 1.3;
-    transition: color var(--t-fast);
-}
-
-.hobby-arrow {
-    margin-left: auto;
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--blue);
-    opacity: 0.6;
-    transition: transform var(--t-fast), opacity var(--t-fast), color var(--t-fast);
-}
-
-
-/* ============ HOBBY PORTFOLIO MODAL ============ */
-.hobby-modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 15, 35, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.hobby-modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.hobby-modal-card {
-    background: var(--off-white);
-    border: 2px solid var(--blue);
-    border-radius: var(--r-lg);
-    max-width: 580px;
-    width: 100%;
-    padding: 32px;
-    position: relative;
-    transform: scale(0.88) translateY(24px);
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 30px 80px rgba(30, 69, 251, 0.3);
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-.hobby-modal-overlay.active .hobby-modal-card {
-    transform: scale(1) translateY(0);
-}
-
-.hobby-modal-close {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(30, 69, 251, 0.08);
-    border: 1px solid rgba(30, 69, 251, 0.2);
-    color: var(--blue);
-    font-size: 1.1rem;
-    font-weight: 800;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--t-fast);
-    z-index: 2;
-}
-
-.hobby-modal-close:hover {
-    background: var(--blue);
-    color: var(--white);
-    border-color: var(--blue);
-    transform: rotate(90deg);
-}
-
-/* Modal Inner Design */
-.modal-header-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
-    background: rgba(30, 69, 251, 0.08);
-    border-radius: var(--r-full);
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: var(--blue);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-}
-
-.modal-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    color: var(--blue);
-    line-height: 1;
-    margin-bottom: 16px;
-}
-
-.modal-image-wrap {
-    width: 100%;
-    height: 240px;
-    border-radius: var(--r-md);
-    overflow: hidden;
-    margin-bottom: 20px;
-    border: 1.5px solid rgba(30, 69, 251, 0.15);
-    box-shadow: 0 8px 24px rgba(30, 69, 251, 0.12);
-}
-
-.modal-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.modal-desc {
-    font-size: 0.95rem;
-    color: var(--gray-700);
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.modal-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.modal-tag {
-    padding: 6px 14px;
-    background: var(--white);
-    border: 1px solid rgba(30, 69, 251, 0.18);
-    border-radius: var(--r-full);
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--blue);
-}
-
-/* Hobbies Subsections (2 Compact Subsections) */
-.vibing-subsection {
-    margin-bottom: 24px;
-}
-
-.vibing-subsection:last-child {
-    margin-bottom: 0;
-}
-
-.vibing-sub-title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--blue);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    opacity: 0.95;
-}
-
-.vibing-sub-title span {
-    color: var(--lime);
-    background: var(--blue);
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-}
-
-.vibing-grid-media {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-}
-
-.vibing-grid-creative {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 20px !important;
-}
 
 .vibing-card {
     background: var(--off-white);
@@ -2784,13 +2153,7 @@ footer {
     transform: scale(1.18);
 }
 
-@media (max-width: 900px) {
 
-    .vibing-grid-media,
-    .vibing-grid-creative {
-        grid-template-columns: 1fr !important;
-    }
-}
 
 /* ============ MOBILE / PHONE RESPONSIVE OPTIMIZATIONS ============ */
 @media (max-width: 768px) {
@@ -2967,16 +2330,7 @@ footer {
 }
 
 
-/* ============ FORM RESPONSIVE ============ */
-@media (max-width: 640px) {
-    .form-row {
-        grid-template-columns: 1fr;
-    }
 
-    .contact-form-wrap {
-        padding: 24px;
-    }
-}
 
 
 /* ============ INTERACTIVE ENHANCEMENTS ============ */
@@ -3002,28 +2356,7 @@ footer {
     mix-blend-mode: difference;
 }
 
-/* --- Text scramble underline --- */
-.scramble-text {
-    position: relative;
-    display: inline-block;
-    cursor: default;
-}
 
-.scramble-text::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: var(--lime);
-    border-radius: 2px;
-    transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-.scramble-text:hover::after {
-    width: 100%;
-}
 
 /* --- Ripple effect on buttons --- */
 .ripple-wrap {
@@ -3047,17 +2380,7 @@ footer {
     }
 }
 
-/* --- Staggered section entrance --- */
-.stagger-item {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
 
-.stagger-item.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* --- Hover glow on project cards --- */
 .project-card::before {
@@ -3071,39 +2394,6 @@ footer {
             rgba(205, 242, 43, 0.08), transparent 60%);
     pointer-events: none;
     z-index: 1;
-}
-
-.project-card:hover::before {
-    opacity: 1;
-}
-
-.project-card {
-    position: relative;
-}
-
-/* --- Typing cursor on hero sub --- */
-.hero-sub em {
-    border-right: 2px solid var(--lime);
-    padding-right: 2px;
-    animation: blinkCaret 1s step-end infinite;
-}
-
-@keyframes blinkCaret {
-    50% {
-        border-color: transparent;
-    }
-}
-
-content: '';
-position: absolute;
-inset: 0;
-border-radius: inherit;
-opacity: 0;
-transition: opacity 0.4s;
-background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(205, 242, 43, 0.08), transparent 60%);
-pointer-events: none;
-z-index: 1;
 }
 
 .project-card:hover::before {

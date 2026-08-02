@@ -2,7 +2,7 @@ import os
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable
 from reportlab.lib.units import inch
 
 pdf_path = os.path.join(os.path.dirname(__file__), "cv.pdf")
@@ -30,24 +30,6 @@ title_style = ParagraphStyle(
     fontSize=18,
     leading=21,
     textColor=primary_color
-)
-
-subtitle_style = ParagraphStyle(
-    'DocSubTitle',
-    parent=styles['Normal'],
-    fontName='Helvetica-Bold',
-    fontSize=11,
-    leading=14,
-    textColor=accent_color
-)
-
-contact_style = ParagraphStyle(
-    'ContactText',
-    parent=styles['Normal'],
-    fontName='Helvetica',
-    fontSize=8.5,
-    leading=11,
-    textColor=text_dark
 )
 
 sec_title_style = ParagraphStyle(
@@ -129,7 +111,7 @@ story.append(Paragraph("<b>PROJECT EXPERIENCES</b>", sec_title_style))
 story.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#333333"), spaceBefore=1, spaceAfter=4))
 
 # Project 1: MEAMBO
-story.append(Paragraph("<b>MEAMBO</b> | <b>Frontend Developer (Community Service Project)</b> <font align='right'>2025</font>", body_style))
+story.append(Paragraph("<b>MEAMBO</b> | <b>Frontend Developer (Community Service Project)</b>&nbsp;&nbsp;&nbsp;&nbsp;2025</font>", body_style))
 story.append(Paragraph("<b>Tech Stack:</b> HTML5, CSS3, JavaScript, Bootstrap, Laravel (Blade) &nbsp;|&nbsp; <b>Link:</b> meambo.id", body_style))
 meambo_bullets = [
     "Engineered the frontend interface for Kelurahan Tipulu's public digital administration platform to streamline online community service requests.",
@@ -142,7 +124,7 @@ for b in meambo_bullets:
 story.append(Spacer(1, 3))
 
 # Project 2: Switchy
-story.append(Paragraph("<b>Switchy – Web Media Converter</b> | <b>Full-Stack Developer (Personal Project)</b> <font align='right'>2026</font>", body_style))
+story.append(Paragraph("<b>Switchy – Web Media Converter</b> | <b>Full-Stack Developer (Personal Project)</b>&nbsp;&nbsp;&nbsp;&nbsp;2026</font>", body_style))
 story.append(Paragraph("<b>Tech Stack:</b> JavaScript (ES6+), HTML5, CSS3, Node.js &nbsp;|&nbsp; <b>Link:</b> prasdionaditya.github.io/Switchy", body_style))
 switchy_bullets = [
     "Developed a responsive web application that converts media files across various formats (e.g., PNG to JPG, MOV to MP4, M4A to MP3).",
@@ -154,7 +136,7 @@ for b in switchy_bullets:
 story.append(Spacer(1, 3))
 
 # Project 3: SiPaling Paham
-story.append(Paragraph("<b>SiPaling Paham – AI-Powered Learning Assistant</b> | <b>Full-Stack Developer (Personal Project)</b> <font align='right'>2026</font>", body_style))
+story.append(Paragraph("<b>SiPaling Paham – AI-Powered Learning Assistant</b> | <b>Full-Stack Developer (Personal Project)</b>&nbsp;&nbsp;&nbsp;&nbsp;2026</font>", body_style))
 story.append(Paragraph("<b>Tech Stack:</b> Python, OpenAI API (LLM), JavaScript, Tailwind CSS &nbsp;|&nbsp; <b>Link:</b> github.com/prasdionaditya/SiPaling-Paham", body_style))
 sipaling_bullets = [
     "Built an AI-driven web application designed to simplify complex university lecture materials into digestible summaries for students.",
