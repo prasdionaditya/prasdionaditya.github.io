@@ -129,6 +129,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    // ============ COPY EMAIL ============
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const toast = document.getElementById('toastNotification');
+    let toastTimeout;
+
+    const showToast = (msg) => {
+        if (!toast) return;
+        const msgEl = toast.querySelector('.toast-msg');
+        if (msgEl) msgEl.textContent = msg;
+        toast.classList.add('active');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.classList.remove('active'), 2800);
+    };
+
+    copyEmailBtn?.addEventListener('click', async () => {
+        const email = 'dionaditya59@gmail.com';
+        try {
+            await navigator.clipboard.writeText(email);
+            showToast('Email copied! ✦');
+        } catch {
+            const ta = document.createElement('textarea');
+            ta.value = email;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('Email copied! ✦');
+        }
+    });
+
 
     // ============ OTW RING — pause on hover ============
     const otwRing = document.getElementById('otwRing');
@@ -174,6 +206,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skillBlocks.forEach(block => pillObserver.observe(block));
 
+
+    // ============ ABOUT TAGS — interactive bounce ============
+    const aboutTags = document.querySelectorAll('.about-tag');
+    aboutTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            tag.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(0.9)' },
+                { transform: 'scale(1.1)' },
+                { transform: 'scale(1)' }
+            ], { duration: 300, easing: 'ease-out' });
+        });
+    });
 
 
     // ============ SMOOTH ANCHOR SCROLLING ============
@@ -556,6 +601,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // ============ HOBBY PORTFOLIO MODAL ============
+    const hobbyModal = document.getElementById('hobbyModal');
+    const hobbyModalContent = document.getElementById('hobbyModalContent');
+    const hobbyModalClose = document.getElementById('hobbyModalClose');
+
+    const hobbyData = {
+        guitar: {
+            badge: "🎸 Playing Guitar",
+            title: "GUITAR & RIFFS",
+            image: "img/hobby_guitar.png",
+            desc: "Writing acoustic fingerstyle arrangements, lead guitar solos, and ambient guitar loops. Music is my primary creative outlet outside of programming.",
+            tags: ["Acoustic Fingerstyle", "Electric Lead", "Music Production", "Improv & Riffs"]
+        },
+        content: {
+            badge: "🎙️ Content Creating • @prasdionaditya",
+            title: "SONG COVERS & MEDIA",
+            image: "img/hobby_content.png",
+            desc: "Arranging and recording acoustic song covers, video edits, and creative vlogs. Watch my latest content on TikTok & YouTube @prasdionaditya.",
+            tags: ["TikTok @prasdionaditya", "YouTube Channel", "Video Edits", "Song Covers"]
+        },
+        photo: {
+            badge: "📸 Photography • @takenbydion",
+            title: "VISUAL PHOTOGRAPHY",
+            image: "img/hobby_photo.jpg",
+            desc: "Exploring visual composition through street photography, architectural framing, and mood color-grading. Sneak peek my portfolio on Instagram @takenbydion.",
+            tags: ["Street Photography", "Color Grading", "Visual Storytelling", "@takenbydion"]
+        },
+        design: {
+            badge: "🎨 Graphic Design • @di0nicious",
+            title: "BRAND & VISUAL SYSTEMS",
+            image: "img/hobby_design.jpg",
+            desc: "Crafting bold brand identities, design systems, visual layouts, and digital graphics. Sneak peek my graphic design work on Instagram @di0nicious.",
+            tags: ["Brand Identity", "Design Systems", "Poster Art", "Instagram @di0nicious"]
+        }
+    };
+
     // ============ HOBBIES SLIDESHOW CAROUSEL ============
     const slidesTrack = document.getElementById('hobbySlidesTrack');
     const slides = document.querySelectorAll('.hobby-slide');
@@ -643,6 +724,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
         startAutoPlay();
     }
+
+    const openHobbyModal = (hobbyKey) => {
+        const data = hobbyData[hobbyKey];
+        if (!data) return;
+
+        hobbyModalContent.innerHTML = `
+            <div class="modal-header-badge">${data.badge}</div>
+            <h3 class="modal-title">${data.title}</h3>
+            <div class="modal-image-wrap">
+                <img src="${data.image}" alt="${data.title}" class="modal-image">
+            </div>
+            <p class="modal-desc">${data.desc}</p>
+            <div class="modal-tags">
+                ${data.tags.map(t => `<span class="modal-tag">${t}</span>`).join('')}
+            </div>
+        `;
+
+        hobbyModal.classList.add('active');
+        hobbyModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (window.playSound) window.playSound('click');
+    };
+
+    const closeHobbyModal = () => {
+        hobbyModal.classList.remove('active');
+        hobbyModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.hobby-click-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const hobby = item.getAttribute('data-hobby');
+            openHobbyModal(hobby);
+        });
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const hobby = item.getAttribute('data-hobby');
+                openHobbyModal(hobby);
+            }
+        });
+    });
+
+    hobbyModalClose?.addEventListener('click', closeHobbyModal);
+
+    hobbyModal?.addEventListener('click', (e) => {
+        if (e.target === hobbyModal) closeHobbyModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && hobbyModal?.classList.contains('active')) {
+            closeHobbyModal();
+        }
+    });
 
     // ============ HERO ABILITY ANIMATED STAGGERED SWITCHER ============
     const heroAbilityBox = document.getElementById('heroAbilityBox');
