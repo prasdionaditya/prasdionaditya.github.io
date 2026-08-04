@@ -706,21 +706,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
 
-        // Auto play every 5s
+        // Auto play every 5s (pauses on hover)
+        let isHovered = false;
+        const vibingWrap = document.querySelector('.vibing-wrap');
+
         const startAutoPlay = () => {
-            autoPlayInterval = setInterval(nextSlide, 5000);
-        };
-        const stopAutoPlay = () => {
-            if (autoPlayInterval) clearInterval(autoPlayInterval);
-        };
-        const resetAutoPlay = () => {
             stopAutoPlay();
-            startAutoPlay();
+            if (!isHovered) {
+                autoPlayInterval = setInterval(nextSlide, 5000);
+            }
         };
 
-        const carouselStage = document.getElementById('hobbyCarouselStage');
-        carouselStage?.addEventListener('mouseenter', stopAutoPlay);
-        carouselStage?.addEventListener('mouseleave', startAutoPlay);
+        const stopAutoPlay = () => {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        };
+
+        const resetAutoPlay = () => {
+            stopAutoPlay();
+            if (!isHovered) {
+                startAutoPlay();
+            }
+        };
+
+        vibingWrap?.addEventListener('mouseenter', () => {
+            isHovered = true;
+            stopAutoPlay();
+        });
+
+        vibingWrap?.addEventListener('mouseleave', () => {
+            isHovered = false;
+            startAutoPlay();
+        });
 
         startAutoPlay();
     }
@@ -776,6 +795,119 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && hobbyModal?.classList.contains('active')) {
             closeHobbyModal();
+        }
+    });
+
+    // ============ 3D MOVIE SHELF & INSPECTOR MODAL ============
+    const movieData = {
+        billie: {
+            title: "Billie Eilish: Hit Me Hard and Soft",
+            stars: "★★★★",
+            year: "2026",
+            poster: "https://a.ltrbxd.com/resized/film-poster/1/3/9/1/7/2/8/1391728-billie-eilish-hit-me-hard-and-soft-the-tour-0-600-0-900-crop.jpg?v=bcd6d878b6",
+            desc: "Live in 3D concert experience. \"asik sendiri di kamar gara2 nda tayang di kendari aoakwk\"",
+            trailer: "https://www.youtube.com/results?search_query=Billie+Eilish+Hit+Me+Hard+and+Soft+Tour+3D",
+            letterboxd: "https://letterboxd.com/dionicious/film/billie-eilish-hit-me-hard-and-soft-the-tour/"
+        },
+        odyssey: {
+            title: "The Odyssey",
+            stars: "★★★★★",
+            year: "2026",
+            poster: "https://a.ltrbxd.com/resized/film-poster/1/2/5/5/3/9/4/1255394-the-odyssey-2026-0-600-0-900-crop.jpg?v=1eed046d0c",
+            desc: "Directed by Christopher Nolan. \"no words, didn't even realize the movie was 3 hrs long\"",
+            trailer: "https://www.youtube.com/results?search_query=The+Odyssey+2026+movie+trailer",
+            letterboxd: "https://letterboxd.com/dionicious/film/the-odyssey-2026/"
+        },
+        obsession: {
+            title: "Obsession",
+            stars: "★★★★",
+            year: "2025",
+            poster: "https://a.ltrbxd.com/resized/film-poster/1/2/3/4/4/7/2/1234472-obsession-2025-2-0-600-0-900-crop.jpg?v=cff6fc00b6",
+            desc: "Psychological thriller. \"unexpected jumpscares lmao\"",
+            trailer: "https://www.youtube.com/results?search_query=Obsession+2025+movie+trailer",
+            letterboxd: "https://letterboxd.com/dionicious/film/obsession-2025/"
+        },
+        sore: {
+            title: "Sore: A Wife from the Future",
+            stars: "★★★★",
+            year: "2025",
+            poster: "https://a.ltrbxd.com/resized/film-poster/1/2/7/0/8/1/4/1270814-sore-a-wife-from-the-future-0-600-0-900-crop.jpg?v=7a31b7c5a8",
+            desc: "\"such a cool Indonesian movie that uses the concept of time-loop!! i love how they showed the beauty of Croatia. soundtracks are soo good and cinematic. absolute cinema!\"",
+            trailer: "https://www.youtube.com/results?search_query=Sore+A+Wife+from+the+Future+trailer",
+            letterboxd: "https://letterboxd.com/dionicious/film/sore-a-wife-from-the-future/"
+        },
+        wallflower: {
+            title: "The Perks of Being a Wallflower",
+            stars: "★★★★",
+            year: "2012",
+            poster: "https://a.ltrbxd.com/resized/film-poster/7/1/3/3/8/71338-the-perks-of-being-a-wallflower-0-600-0-900-crop.jpg?v=f2235860f7",
+            desc: "\"i've found my comfort movie all the time. as the quiet kid, i realized how powerful having supportive friends is. and in this moment, i swear— we are infinite.\"",
+            trailer: "https://www.youtube.com/watch?v=n5rh7O4V_18",
+            letterboxd: "https://letterboxd.com/dionicious/film/the-perks-of-being-a-wallflower/"
+        }
+    };
+
+    const movieModal = document.getElementById('movieModal');
+    const movieModalClose = document.getElementById('movieModalClose');
+    const modalDvdCover = document.getElementById('modalDvdCover');
+    const modalMovieTitle = document.getElementById('modalMovieTitle');
+    const modalMovieStars = document.getElementById('modalMovieStars');
+    const modalMovieYear = document.getElementById('modalMovieYear');
+    const modalMovieDesc = document.getElementById('modalMovieDesc');
+    const modalTrailerBtn = document.getElementById('modalTrailerBtn');
+    const modalLetterboxdBtn = document.getElementById('modalLetterboxdBtn');
+
+    const openMovieModal = (key) => {
+        const item = movieData[key];
+        if (!item || !movieModal) return;
+
+        if (modalDvdCover) modalDvdCover.src = item.poster;
+        if (modalMovieTitle) modalMovieTitle.textContent = item.title;
+        if (modalMovieStars) modalMovieStars.textContent = item.stars;
+        if (modalMovieYear) modalMovieYear.textContent = item.year;
+        if (modalMovieDesc) modalMovieDesc.textContent = item.desc;
+        if (modalTrailerBtn) modalTrailerBtn.href = item.trailer;
+        if (modalLetterboxdBtn) modalLetterboxdBtn.href = item.letterboxd || 'https://letterboxd.com/dionicious/';
+
+        movieModal.classList.add('active');
+        movieModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (window.playSound) window.playSound('click');
+    };
+
+    const closeMovieModal = () => {
+        if (!movieModal) return;
+        movieModal.classList.remove('active');
+        movieModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.dvd-case[data-movie]').forEach(caseEl => {
+        caseEl.addEventListener('click', () => {
+            const movieKey = caseEl.getAttribute('data-movie');
+            openMovieModal(movieKey);
+        });
+
+        // 3D Parallax tilt on mouse move
+        caseEl.addEventListener('mousemove', (e) => {
+            const rect = caseEl.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            caseEl.style.transform = `rotateY(${x * 24}deg) rotateX(${-y * 24}deg) translateZ(64px) translateY(-16px) scale(1.08)`;
+        });
+
+        caseEl.addEventListener('mouseleave', () => {
+            caseEl.style.transform = '';
+        });
+    });
+
+    movieModalClose?.addEventListener('click', closeMovieModal);
+    movieModal?.addEventListener('click', (e) => {
+        if (e.target === movieModal) closeMovieModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && movieModal?.classList.contains('active')) {
+            closeMovieModal();
         }
     });
 
